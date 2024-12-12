@@ -1,5 +1,8 @@
 from typing import Optional
-from layout import bmiframe 
+
+from unicodedata import category
+
+from layout import bmiframe
 
 class BmiCatSimple:
     def __init__(self):
@@ -22,9 +25,16 @@ class BmiCatSimple:
                 return cat
         return "Unbekannt"
 
-class BmiAgeSex(BmiCatSimple):
-    def __init__(self, sex: str, ):
-        super().__init__()
+class BmiAgeSexCat:
+    def __init__(self):
+        self.categories = [
+            ("Untergewicht", (None, 18.5)),
+            ("Normalgewicht", (18.5, 24.9)),
+            ("Übergewicht", (25, 29.9)),
+            ("Starkes Übergewicht (Adipositas Grad I)", (30, 34.9)),
+            ("Adipositas Grad II", (35, 39.9)),
+            ("Adipositas Grad III", (40, None))
+        ]
         self.categories_male = [
             ("Untergewicht", (None, 20)),
             ("Normalgewicht", (20, 24.9)),
@@ -33,18 +43,84 @@ class BmiAgeSex(BmiCatSimple):
             ("Adipositas Grad II", (35, 39.9)),
             ("Adipositas Grad III", (40, None))
         ]
+        self.categories_female = [
+            ("Untergewicht", (None, 19)),
+            ("Normalgewicht", (19, 23.9)),
+            ("Übergewicht", (24, 29.9)),
+            ("Starkes Übergewicht (Adipositas Grad I)", (30, 34.9)),
+            ("Adipositas Grad II", (35, 39.9)),
+            ("Adipositas Grad III", (40, None))
+        ]
+        self.age_sex_bmi_table = {
+            (19, 24): {
+                'm': (20, 24),
+                'f': (19, 23),
+                None: (19, 24)
+            },
+            (25, 34): {
+                'm': (21, 25),
+                'f': (20, 24),
+                None: (20, 25)
+            },
+            (35, 44): {
+                'm': (22, 26),
+                'f': (21, 25),
+                None: (21, 26)
+            },
+            (45, 54): {
+                'm': (23, 27),
+                'f': (22, 26),
+                None: (22, 27)
+            },
+            (55, 65): {
+                'm': (24, 28),
+                'f': (23, 27),
+                None: (23, 28)
+            },
+            (66, None): {
+                'm': (25, 29),
+                'f': (24, 28),
+                None: (24, 29)
+            }
+        }
+
+    def get_ideal_bmi(self, age: int, sex: str) -> tuple:
+        if age < 19 or sex not in ['m', 'f', None] or not isinstance(age, int):
+            raise ValueError("Invalid")
+        for (age_min, age_max), bmi_ranges in self.age_sex_bmi_table.items():
+            if (age_min is None or age >= age_min) and (age_max is None or age <= age_max):
+                return bmi_ranges.get(sex, (None, None))
+        return (None, None)
 
     def __getitem__(self, item):
-        for cat, (lower, upper) in self.categories:
+        match item:
+            case float() | int():
+                item = float(item)
+                categories = self.categories
+            case tuple():
+                if len(item) != 2:
+                    raise ValueError("Invalid item type")
+                match item[1]:
+                    case "m":
+                        categories = self.categories_male
+                    case "f":
+                        categories = self.categories_female
+                    case None:
+                        categories = self.categories
+                    case _:
+                        raise ValueError("Invalid item type")
+                item = float(item[0])
+            case _:
+                raise ValueError("Invalid item type")
+
+        for cat, (lower, upper) in categories:
             if lower is None and item < upper:
                 return cat
             if upper is None and item >= lower:
                 return cat
-            if lower is not None and upper is not None and lower <= item < upper:
+            if lower is not None and upper is not None and lower <= item <= upper:
                 return cat
         return "Unbekannt"
-bmi = BmiCatSimple()  # Übergewicht
-print(bmi[25])  # Übergewicht
 
 
 class BmiError(Exception):
@@ -68,6 +144,7 @@ class BmiCalc:
         self.__weight = None
         self.__sex = None
         self.__size = None
+        self.__bmi_cat = BmiAgeSexCat()
 
     def get_bmi(self) -> float:
         """ :return: current BMI """
@@ -148,9 +225,12 @@ class BmiCalc:
         """ calculate ideal weight
         :return: ideal weight in gk
         """
-        pass  # TODO
+        return
 
 
 if __name__ == '__main__':
+    bmi = BmiAgeSexCat()  # Übergewicht
+    print(bmi[(24.9, "f")])  # Übergewicht
+    print(bmi.get_ideal_bmi(25, "f" ))  # (20, 24)
     bmi = BmiCalc()
     bmi.set_age(-25)
