@@ -12,25 +12,24 @@ class InputHandler(InputFrameModule.inputPanel):
     def __init__(self, parent):
         super().__init__(parent)
         self.button_calc.Bind(wx.EVT_BUTTON, self.on_calc)
-        self.txt_age.Bind(wx.EVT_TEXT, self.update_age)
+        self.txt_age.Bind(wx.EVT_CHAR, self.only_allow_number)
         self.radiobox_sex.Bind(wx.EVT_RADIOBOX, self.update_sex)
-        self.txt_height.Bind(wx.EVT_TEXT, self.update_height)
-        self.txt_mass.Bind(wx.EVT_TEXT, self.update_weight)
+        self.txt_height.Bind(wx.EVT_CHAR, self.only_allow_number)
+        self.txt_mass.Bind(wx.EVT_CHAR, self.only_allow_number)
         self.Show()
 
-    def on_calc(self, event):
-        pass
-
-    def update_age(self, event):
-        pass
+    def only_allow_number(self, event):
+        key_code = event.GetKeyCode()
+        # Check if the key is a number, backspace, or a control key (e.g., arrow keys)
+        if (48 <= key_code <= 57) or (key_code in [wx.WXK_BACK, wx.WXK_RETURN]):
+            event.Skip()  # Allow the input
+        else:
+            event.Veto()  # Reject the input
 
     def update_sex(self, event):
         pass
 
-    def update_height(self, event):
-        pass
-
-    def update_weight(self, event):
+    def on_calc(self, event):
         pass
 
 

@@ -1,5 +1,4 @@
 from typing import Optional
-from layout import bmiframe 
 
 class BmiCatSimple:
     def __init__(self):
