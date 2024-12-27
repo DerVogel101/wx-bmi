@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Elmar Loos / Jürgen Wolkenhauer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>BMI Rechner Frontend und Backend</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="backend">Backend</h1>
+<p>Erstellen Sie zuerst ein WireFrame und danach ein GUI Programm zur Berechnung des BMI und des Idealgewichts abhängig von der Größe, des Gewichtes und des Geschlechtes, das angegeben wurde.</p>
+<p>Die GUI enthält Bedienelemente zur Eingabe von :
+    <ul>
+        <li>Größe</li>
+        <li>Gewicht</li>
+        <li>Geschlecht</li>
+        <li>Alter</li>
+    </ul></p>
+<p>Die Ausgabe der Ergebnisse erfordert einfache GUI Elemente für dieErgebnisse:
+    <ul>
+      <li>die Bewertung ("Untergewichtig", "Normal gewichtig", ...)</li>
+      <li>den berechneten BMI</li>
+      <li>das Idealgewicht.</li></ul>
+</p>
+<p>Der BMI wird nach der Formel <span class="math inline">\(\text{BMI}=\frac{m}{h^2}\)</span> berechnet, wobei <span class="math inline">\(m\)</span> das Körpergewicht in Kilogramm und <span class="math inline">\(h\)</span> die Körpergröße in Metern angibt.</p>
+<p>Auf der Website <a href="http://www.spiegel.de/gesundheit/ernaehrung/bmi-rechner-so-ermitteln-sie-ihren-body-mass-index-a-824673.html" class="uri">http://www.spiegel.de/gesundheit/ernaehrung/bmi-rechner-so-ermitteln-sie-ihren-body-mass-index-a-824673.html</a> finden Sie die Informationen zur Bewertung des BMI. Wenn kein Geschlecht und kein Alter angegeben sind, dann soll die erste Tabelle verwendet werden (WHO). Ist ein Geschlecht angegeben, soll die zweite nach Geschlechtern differenzierte Tabelle zugrunde gelegt werden. Ist ein Alter angegeben, so soll die jeweilige Tabelle entsprechend an das Alter angepasst werden. Legen Sie dabei für die ersten beiden Tabellen ein Alter von 25 bis 34 Jahren zugrunde.</p>
+<p>Die Kategorien sollen jeweils mit der auf der Website angegebenen Bezeichnung benannt werden. Das Idealgewicht liegt genau in der Mitte der Kategorie Normalgewicht (das ist z.~B. ein BMI von <span class="math inline">\(21,5\frac{\text{kg}}{\text{m}^2}\)</span> für Frauen und <span class="math inline">\(22,5\frac{\text{kg}}{\text{m}^2}\)</span> für Männer, wenn kein Alter angegeben wurde).</p>
+<h2 id="methoden">Methoden</h2>
+<p>Die Klasse <code>BmiCalc</code> soll die im Folgenden angegebenen Methoden mit der entsprechenden Schnittstelle implementieren: Es dürfen selbstverständlich weitere Methoden und Attribute hinzugefügt werden und weitere Klassen verwendet werden.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> typing <span class="im">import</span> Optional
+
+
+<span class="kw">class</span> BmiCalc:
+    <span class="co">&quot;&quot;&quot;Interface for BMI Calculation&quot;&quot;&quot;</span>
+
+    <span class="kw">def</span> get_bmi(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:
+        <span class="co">&quot;&quot;&quot; :return: current BMI &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_category(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:
+        <span class="co">&quot;&quot;&quot;</span>
+<span class="co">        :return: current weight category as string</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_age(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int | None</span>:
+        <span class="co">&quot;&quot;&quot; get current age</span>
+<span class="co">        :return: current age</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> set_age(<span class="va">self</span>, age: Optional[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="co">&quot;&quot;&quot; Set new or reset age</span>
+<span class="co">        :param age: new age or None to reset</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_sex(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str | None</span>:
+        <span class="co">&quot;&quot;&quot; get current sex as &#39;m&#39; or &#39;f&#39;</span>
+<span class="co">        :return: current sex</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> set_sex(<span class="va">self</span>, sex: Optional[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="co">&quot;&quot;&quot; Set new or reset sex</span>
+<span class="co">        :param sex: new sex as &#39;m&#39; or &#39;f&#39; or None to reset</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_size(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:
+        <span class="co">&quot;&quot;&quot; get current size</span>
+<span class="co">        :return: current size in meters</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> set_size(<span class="va">self</span>, size: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="co">&quot;&quot;&quot; Set new size in meters</span>
+<span class="co">        :param size: new size</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_weight(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:
+        <span class="co">&quot;&quot;&quot; get current weight</span>
+<span class="co">        :return: current weight in kg</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> set_weight(<span class="va">self</span>, weight: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="co">&quot;&quot;&quot; Set new weight in meters</span>
+<span class="co">        :param weight: new weight</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span>
+
+    <span class="kw">def</span> get_ideal_weight(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:
+        <span class="co">&quot;&quot;&quot; calculate ideal weight</span>
+<span class="co">        :return: ideal weight in kg</span>
+<span class="co">        &quot;&quot;&quot;</span>
+        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span></code></pre></div>
+<h1 id="hauptprogramm">Hauptprogramm</h1>
+<p>Erstellen Sie ein Hauptprogramm mit einer GUI zur Berechnung des BMI und des Idealgewichts abhängig von der Größe, des Gewichtes und des Geschlechtes, das angegeben wurde. Verwenden Sie dafür zur Berechnung das oben beschriebene Backend 'BmiCalc'. Stellen Sie sicher, dass Fehleingaben abgefangen und an den Benutzer mit einer Fehlermeldung zurückgemeldet werden.</p>
+<p>Eine Beispieloberfläche soll von Ihnen als WireFrame ebntworfen werden.</p>
+<p> Eine Neuberechnung des BMI kann durch einen Button ausgelöst werden oder direkt nach jeder Änderung erfolgen. Der Button zur Berechnung kann dann entfallen.</p>
+<h1 id="bearbeitung">Bearbeitung</h1>
+<p>Dokumentieren und Kommentieren Sie hinreichend und berücksichtigen Sie die einschlägigen Informationen zur Programmierung aus dem Unterricht. Die Dokumentation soll außerdem eine Klassendiagramm enthalten. Das Programm soll in Teams von zwei Personen entwickelt werden.</p>
+</body>
+</html>
