@@ -55,20 +55,24 @@ class inputPanel ( wx.Panel ):
         self.radiobox_sex.SetSelection( 2 )
         fgSizer5.Add( self.radiobox_sex, 0, wx.SHAPED|wx.BOTTOM|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, _(u"Größe: "), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, _(u"Größe (cm): "), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText5.Wrap( -1 )
 
         fgSizer5.Add( self.m_staticText5, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         self.txt_height = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_CENTER )
+        self.txt_height.SetToolTip( _(u"Größe") )
+
         fgSizer5.Add( self.txt_height, 0, wx.ALIGN_CENTER_VERTICAL|wx.EXPAND|wx.TOP|wx.BOTTOM|wx.RIGHT, 5 )
 
-        self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, _(u"Gewicht: "), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, _(u"Gewicht (kg): "), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText6.Wrap( -1 )
 
         fgSizer5.Add( self.m_staticText6, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         self.txt_mass = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_CENTER )
+        self.txt_mass.SetToolTip( _(u"Gewicht") )
+
         fgSizer5.Add( self.txt_mass, 0, wx.ALIGN_CENTER_VERTICAL|wx.TOP|wx.BOTTOM|wx.RIGHT|wx.EXPAND, 5 )
 
 
