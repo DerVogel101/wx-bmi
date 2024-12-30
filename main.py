@@ -84,8 +84,8 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         super().__init__(parent)
         self.input_frame = InputHandler(self)
         self.output_frame = OutputFrame(self)
-        self.Sizer.Add(self.input_frame, 1, wx.EXPAND)
-        self.Sizer.Add(self.output_frame, 1, wx.EXPAND)
+        self.main_content_area.Add(self.input_frame, 1, wx.EXPAND)
+        self.main_content_area.Add(self.output_frame, 1, wx.EXPAND)
 
         self.Bind(EVT_BMI_UPDATE_BINDER, self.on_bmi_update)
         self.Show()
