@@ -37,9 +37,18 @@ class InputHandler(InputFrameModule.inputPanel):
         values = [0,0,0]
         for i, e in enumerate([self.txt_age, self.txt_height, self.txt_mass]):
             try:
+                # Edge cases Adge
+                ### Empty input
+                if i == 0 and not e.GetValue():
+                    values[i] = None
+                    continue
                 values[i] = float(e.GetValue())
+                ### Underage
+                if i == 0 and values[i] < 18:
+                    wx.MessageBox("This calculator only covers persons older than 18. If you need to calculate the BMI of a child, try: https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.ICON_ERROR)
+                    return
             except ValueError:
-                wx.MessageBox(f"Invalid input for {e.GetToolTip()}", "Error", wx.OK | wx.ICON_ERROR)
+                wx.MessageBox(f"Invalid input for {e.GetToolTip().GetTip()}", "Error", wx.OK | wx.ICON_ERROR)
                 return
         
         try:
@@ -54,7 +63,7 @@ class InputHandler(InputFrameModule.inputPanel):
 
         try:
             shared_bmi.set_age(values[0])
-            shared_bmi.set_size(values[1])
+            shared_bmi.set_size(values[1] / 100) # Convert cm to m
             shared_bmi.set_weight(values[2])
             score = shared_bmi.get_bmi()
         except Exception as e:

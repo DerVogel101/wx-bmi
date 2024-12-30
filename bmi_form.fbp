@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <wxFormBuilder_Project>
   <FileVersion major="1" minor="18"/>
-  <object class="Project" expanded="false">
+  <object class="Project" expanded="true">
     <property name="code_generation">C++</property>
     <property name="cpp_class_decoration">; </property>
     <property name="cpp_disconnect_events">0</property>
@@ -472,7 +472,7 @@
                     <property name="gripper">0</property>
                     <property name="hidden">0</property>
                     <property name="id">wxID_ANY</property>
-                    <property name="label">Größe: </property>
+                    <property name="label">Größe (cm): </property>
                     <property name="markup">0</property>
                     <property name="max_size"></property>
                     <property name="maximize_button">0</property>
@@ -599,7 +599,7 @@
                     <property name="gripper">0</property>
                     <property name="hidden">0</property>
                     <property name="id">wxID_ANY</property>
-                    <property name="label">Gewicht: </property>
+                    <property name="label">Gewicht (kg): </property>
                     <property name="markup">0</property>
                     <property name="max_size"></property>
                     <property name="maximize_button">0</property>
@@ -773,7 +773,7 @@
         </object>
       </object>
     </object>
-    <object class="Panel" expanded="false">
+    <object class="Panel" expanded="true">
       <property name="aui_managed">0</property>
       <property name="aui_manager_style">wxAUI_MGR_DEFAULT</property>
       <property name="bg"></property>
@@ -797,7 +797,7 @@
       <property name="window_extra_style"></property>
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
-      <object class="wxBoxSizer" expanded="false">
+      <object class="wxBoxSizer" expanded="true">
         <property name="minimum_size"></property>
         <property name="name">bSizer8</property>
         <property name="orient">wxVERTICAL</property>
