@@ -1,5 +1,4 @@
 from typing import Optional
-import buttplug  # FIXME: Remove this line  # pip install buttplug-py
 
 
 class BmiCatSimple:
@@ -124,7 +123,7 @@ class BmiCalc:
         self.__weight = None
         self.__sex = None
         self.__size = None
-        self.__bmi_cat = BmiAgeSex()
+        self.bmi_cat = BmiAgeSex()
 
     def get_bmi(self) -> float:
         """ :return: current BMI """
@@ -138,7 +137,7 @@ class BmiCalc:
         """
         :return: current weight category as string
         """
-        return self.__bmi_cat[self.get_bmi()][0]
+        return self.bmi_cat[self.get_bmi()][0]
 
     def get_age(self) -> int | None:
         """get current age
@@ -154,7 +153,7 @@ class BmiCalc:
             raise AgeDiscriminationError(f"The age: {age} is not a valid age. Please use a positive number or None")
 
         self.__age = age
-        self.__bmi_cat.set_age(age)
+        self.bmi_cat.set_age(age)
 
     def get_sex(self) -> str | None:
         """ get current sex_offset as 'm' or 'f' or None
@@ -169,7 +168,7 @@ class BmiCalc:
         if sex_string not in ['m', 'f', None]:
             raise SexError(f"The sex_offset: {sex_string} is not right. Please use 'm' or 'f' or None")
         self.__sex = sex_string
-        self.__bmi_cat.set_sex(sex_string)
+        self.bmi_cat.set_sex(sex_string)
 
     def get_size(self) -> float:
         """ get current size
@@ -207,7 +206,7 @@ class BmiCalc:
         """ calculate ideal weight
         :return: ideal weight in kg
         """
-        ideal_bmi = self.__bmi_cat[self.get_bmi()][1]
+        ideal_bmi = self.bmi_cat[self.get_bmi()][1]
         if ideal_bmi is None:
             raise AgeDiscriminationError("Ideal weight is not available for this age")
         return ideal_bmi * (self.__size ** 2)

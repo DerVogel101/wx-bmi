@@ -1,4 +1,5 @@
 import wx
+import wx.lib
 import layout.mainFrame as MainFrameModule
 import layout.inputFrame as InputFrameModule
 import layout.outputFrame as OutputFrameModule
@@ -79,6 +80,8 @@ class InputHandler(InputFrameModule.inputPanel):
 class OutputFrame(OutputFrameModule.outputPanel):
     def __init__(self, parent):
         super().__init__(parent)
+        self.bmi_table.SetRowLabelSize(300)
+        #self.bmi_table.SetDefaultRowSize(100)
         self.Show()
 
 
@@ -94,10 +97,39 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         self.Show()
 
     def on_bmi_update(self, event):
-        print(event.score)
+        # Update score 
         self.output_frame.score_box.SetValue(str(event.score))
+        # Update ideal weight
+        self.output_frame.ideal_weight_box.SetValue(str(shared_bmi.get_ideal_weight()))
 
+        # Get table
+        table = shared_bmi.bmi_cat.selected_categories
+        # Clear table, adjust size
+        # Technicaly not needed but alows for changes in table without neding to touch this code
+        self.output_frame.bmi_table.ClearGrid()
+        self.output_frame.bmi_table.DeleteCols(0, 99)
+        self.output_frame.bmi_table.DeleteRows(0, 99)
+        self.output_frame.bmi_table.AppendCols(2)
+        self.output_frame.bmi_table.AppendRows(len(table))
+        # Update col headers
+        self.output_frame.bmi_table.SetColLabelValue(0, "Min")
+        self.output_frame.bmi_table.SetColLabelValue(1, "Max")
+        # Update row 
+        for i, e in enumerate(table):
+            self.output_frame.bmi_table.SetRowLabelValue(i, e[0])
+            self.output_frame.bmi_table.SetCellValue(i, 0, str(e[1][0]).replace("None", "-"))
+            self.output_frame.bmi_table.SetCellValue(i, 1, str(e[1][1]).replace("None", "-"))
+            min_val = e[1][0] if e[1][0] is not None else float('-inf')
+            max_val = e[1][1] if e[1][1] is not None else float('inf')
+            if min_val <= event.score <= max_val:
+                col = wx.SystemSettings.GetColour(wx.SYS_COLOUR_HIGHLIGHT)
 
+                self.output_frame.bmi_table.SetCellBackgroundColour(i, 0, col)  # Highlight row in yellow
+                self.output_frame.bmi_table.SetCellBackgroundColour(i, 1, col)  # Highlight row in yellow
+
+        self.output_frame.bmi_table.Enable(True)
+
+        
 if __name__ == '__main__':
     app = wx.App()
     root = MainFrame(None)
