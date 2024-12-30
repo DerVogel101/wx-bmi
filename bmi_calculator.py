@@ -1,17 +1,16 @@
 from typing import Optional
-import buttplug  # FIXME: Remove this line  # pip install buttplug-py
 
 
 class BmiCatSimple:
     def __init__(self):
-        self.categories = [
+        self.categories = (
             ("Untergewicht", (None, 18.5)),
             ("Normalgewicht", (18.5, 24.9)),
             ("Übergewicht", (25, 29.9)),
             ("Starkes Übergewicht (Adipositas Grad I)", (30, 34.9)),
             ("Adipositas Grad II", (35, 39.9)),
             ("Adipositas Grad III", (40, None))
-        ]
+        )
 
     def __getitem__(self, item: float) -> str:
         for cat, (lower, upper) in self.categories:
@@ -46,15 +45,6 @@ class BmiAgeSex(BmiCatSimple):
         )
         self.selected_categories = self.categories
 
-        # self.ideal_age = (
-        #     ((None,24), (19-24)),
-        #     ((25,34), (20-25)),
-        #     ((35,44), (21-26)),
-        #     ((45,54), (22-27)),
-        #     ((55,64), (23-28)),
-        #     ((65,None), (24-29))
-        # )
-
     def set_sex(self, sex: str | None):
 
         match sex:
@@ -84,13 +74,6 @@ class BmiAgeSex(BmiCatSimple):
                 category = cat
 
         if not self.age is None:
-            # for (lower, upper), ideal in self.ideal_age:
-            #     if lower is None and item < upper:
-            #         ideal_bmi = ideal
-            #     elif upper is None and item >= lower:
-            #         ideal_bmi = ideal
-            #     elif lower is not None and upper is not None and lower <= item < upper:
-            #         ideal_bmi = ideal
             if self.age < 18:
                 age = 18
             elif self.age > 65:
