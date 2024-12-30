@@ -1,4 +1,6 @@
 from typing import Optional
+import buttplug  # FIXME: Remove this line  # pip install buttplug-py
+
 
 class BmiCatSimple:
     def __init__(self):
@@ -22,28 +24,83 @@ class BmiCatSimple:
         return "Unbekannt"
 
 class BmiAgeSex(BmiCatSimple):
-    def __init__(self, sex: str, ):
+    def __init__(self):
         super().__init__()
-        self.categories_male = [
+        self.sex_offset = 0
+        self.age = None
+        self.categories_male = (
             ("Untergewicht", (None, 20)),
             ("Normalgewicht", (20, 24.9)),
             ("Übergewicht", (25, 29.9)),
             ("Starkes Übergewicht (Adipositas Grad I)", (30, 34.9)),
             ("Adipositas Grad II", (35, 39.9)),
             ("Adipositas Grad III", (40, None))
-        ]
+        )
+        self.categories_female = (
+            ("Untergewicht", (None, 19)),
+            ("Normalgewicht", (19, 23.9)),
+            ("Übergewicht", (24, 28.9)),
+            ("Starkes Übergewicht (Adipositas Grad I)", (29, 33.9)),
+            ("Adipositas Grad II", (34, 38.9)),
+            ("Adipositas Grad III", (39, None))
+        )
+        self.selected_categories = self.categories
 
-    def __getitem__(self, item):
-        for cat, (lower, upper) in self.categories:
+        # self.ideal_age = (
+        #     ((None,24), (19-24)),
+        #     ((25,34), (20-25)),
+        #     ((35,44), (21-26)),
+        #     ((45,54), (22-27)),
+        #     ((55,64), (23-28)),
+        #     ((65,None), (24-29))
+        # )
+
+    def set_sex(self, sex: str | None):
+
+        match sex:
+            case 'm':
+                self.selected_categories = self.categories_male
+                self.sex_offset = 0.5
+            case 'f':
+                self.selected_categories = self.categories_female
+                self.sex_offset = -0.5
+            case _:
+                self.selected_categories = self.categories
+                self.sex_offset = 0
+
+    def set_age(self, age: int | None):
+        self.age = age
+
+    def __getitem__(self, item) -> tuple[str, float | None]:
+        category = "Unbekannt"
+        ideal_bmi = None
+
+        for cat, (lower, upper) in self.selected_categories:
             if lower is None and item < upper:
-                return cat
-            if upper is None and item >= lower:
-                return cat
-            if lower is not None and upper is not None and lower <= item < upper:
-                return cat
-        return "Unbekannt"
-bmi = BmiCatSimple()  # Übergewicht
-print(bmi[25])  # Übergewicht
+                category = cat
+            elif upper is None and item >= lower:
+                category = cat
+            elif lower is not None and upper is not None and lower <= item < upper:
+                category = cat
+
+        if not self.age is None:
+            # for (lower, upper), ideal in self.ideal_age:
+            #     if lower is None and item < upper:
+            #         ideal_bmi = ideal
+            #     elif upper is None and item >= lower:
+            #         ideal_bmi = ideal
+            #     elif lower is not None and upper is not None and lower <= item < upper:
+            #         ideal_bmi = ideal
+            if self.age < 18:
+                age = 18
+            elif self.age > 65:
+                age = 65
+            else:
+                age = self.age
+            ideal_bmi = (19.5576073 * (1.0045961 ** age)) + self.sex_offset
+
+        return category, ideal_bmi
+
 
 
 class BmiError(Exception):
@@ -67,6 +124,7 @@ class BmiCalc:
         self.__weight = None
         self.__sex = None
         self.__size = None
+        self.__bmi_cat = BmiAgeSex()
 
     def get_bmi(self) -> float:
         """ :return: current BMI """
@@ -80,10 +138,10 @@ class BmiCalc:
         """
         :return: current weight category as string
         """
-        pass  # TODO
+        return self.__bmi_cat[self.get_bmi()][0]
 
     def get_age(self) -> int | None:
-        """ get current age
+        """get current age
         :return: current age
         """
         return self.__age
@@ -96,20 +154,22 @@ class BmiCalc:
             raise AgeDiscriminationError(f"The age: {age} is not a valid age. Please use a positive number or None")
 
         self.__age = age
+        self.__bmi_cat.set_age(age)
 
     def get_sex(self) -> str | None:
-        """ get current sex as 'm' or 'f' or None
-        :return: current sex
+        """ get current sex_offset as 'm' or 'f' or None
+        :return: current sex_offset
         """
         return self.__sex
 
-    def set_sex(self, sex: Optional[str]) -> None:
-        """ Set new or reset sex
-        :param sex: new sex as 'm' or 'f' or None
+    def set_sex(self, sex_string: Optional[str]) -> None:
+        """ Set new or reset sex_offset
+        :param sex_string: new sex_offset as 'm' or 'f' or None
         """
-        if sex not in ['m', 'f', None]:
-            raise SexError(f"The sex: {sex} is not right. Please use 'm' or 'f' or None")
-        self.__sex = sex
+        if sex_string not in ['m', 'f', None]:
+            raise SexError(f"The sex_offset: {sex_string} is not right. Please use 'm' or 'f' or None")
+        self.__sex = sex_string
+        self.__bmi_cat.set_sex(sex_string)
 
     def get_size(self) -> float:
         """ get current size
@@ -145,9 +205,12 @@ class BmiCalc:
 
     def get_ideal_weight(self) -> float:
         """ calculate ideal weight
-        :return: ideal weight in gk
+        :return: ideal weight in kg
         """
-        pass  # TODO
+        ideal_bmi = self.__bmi_cat[self.get_bmi()][1]
+        if ideal_bmi is None:
+            raise AgeDiscriminationError("Ideal weight is not available for this age")
+        return ideal_bmi * (self.__size ** 2)
 
 
 if __name__ == '__main__':

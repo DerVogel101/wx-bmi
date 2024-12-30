@@ -44,9 +44,12 @@ class InputHandler(InputFrameModule.inputPanel):
         
         try:
             match self.radiobox_sex.GetStringSelection()[0]:
-                case 'Mänlich': shared_bmi.set_sex("m")
-                case 'Weiblich': shared_bmi.set_sex("f")
-                case _:  shared_bmi.set_sex(None)
+                case 'Männlich':
+                    shared_bmi.set_sex("m")
+                case 'Weiblich':
+                    shared_bmi.set_sex("f")
+                case _:
+                    shared_bmi.set_sex(None)
 
         except bmi_calculator.SexError as e:
             wx.MessageBox(str(e), "Error", wx.OK | wx.ICON_ERROR)

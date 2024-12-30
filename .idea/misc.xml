@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="Python 3.12 (bmi_wx)" />
+    <option name="sdkName" value="Python 3.12 (wx-bmi)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (bmi_wx)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (wx-bmi)" project-jdk-type="Python SDK" />
 </project>
