@@ -24,10 +24,10 @@ class inputPanel ( wx.Panel ):
 
         bSizer2 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, _(u"Körper Werte:"), wx.DefaultPosition, wx.Size( 130,30 ), 0 )
+        self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, _(u"Körper Werte:"), wx.DefaultPosition, wx.Size( 145,30 ), 0 )
         self.m_staticText1.Wrap( -1 )
 
-        self.m_staticText1.SetFont( wx.Font( 15, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+        self.m_staticText1.SetFont( wx.Font( 15, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
 
         bSizer2.Add( self.m_staticText1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
@@ -46,12 +46,22 @@ class inputPanel ( wx.Panel ):
         self.m_staticText4 = wx.StaticText( self, wx.ID_ANY, _(u"Geschlecht: "), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText4.Wrap( -1 )
 
-        fgSizer5.Add( self.m_staticText4, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+        fgSizer5.Add( self.m_staticText4, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
         radiobox_sexChoices = [ _(u"Männlich"), _(u"Weiblich"), _(u"keine Angabe") ]
         self.radiobox_sex = wx.RadioBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,-1 ), radiobox_sexChoices, 2, 0|wx.BORDER_NONE )
         self.radiobox_sex.SetSelection( 2 )
-        fgSizer5.Add( self.radiobox_sex, 0, wx.SHAPED|wx.BOTTOM|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+        fgSizer5.Add( self.radiobox_sex, 0, wx.SHAPED|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL|wx.BOTTOM, 5 )
+
+        self.m_staticText41 = wx.StaticText( self, wx.ID_ANY, _(u"Körpertypen:"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText41.Wrap( -1 )
+
+        fgSizer5.Add( self.m_staticText41, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+        radiobox_body_typeChoices = [ _(u"Zierlich"), _(u"Normal"), _(u"Kräftig") ]
+        self.radiobox_body_type = wx.RadioBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,-1 ), radiobox_body_typeChoices, 2, 0|wx.BORDER_NONE )
+        self.radiobox_body_type.SetSelection( 1 )
+        fgSizer5.Add( self.radiobox_body_type, 0, wx.BOTTOM, 5 )
 
         self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, _(u"Größe (cm): "), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText5.Wrap( -1 )

@@ -28,12 +28,14 @@ class outputPanel ( wx.Panel ):
         self.m_staticText18 = wx.StaticText( self, wx.ID_ANY, _(u"Ergebniss:"), wx.DefaultPosition, wx.Size( -1,30 ), 0 )
         self.m_staticText18.Wrap( -1 )
 
-        self.m_staticText18.SetFont( wx.Font( 15, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+        self.m_staticText18.SetFont( wx.Font( 15, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
         self.m_staticText18.SetMinSize( wx.Size( 110,30 ) )
 
         bSizer8.Add( self.m_staticText18, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.bmi_table = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+        bSizer71 = wx.BoxSizer( wx.VERTICAL )
+
+        self.bmi_table = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), wx.FULL_REPAINT_ON_RESIZE )
 
         # Grid
         self.bmi_table.CreateGrid( 6, 2 )
@@ -61,7 +63,18 @@ class outputPanel ( wx.Panel ):
         self.bmi_table.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
         self.bmi_table.Enable( False )
 
-        bSizer8.Add( self.bmi_table, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+        bSizer71.Add( self.bmi_table, 0, 0, 5 )
+
+        self.m_staticText13 = wx.StaticText( self, wx.ID_ANY, _(u"*angaben in BMI-Score"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText13.Wrap( -1 )
+
+        self.m_staticText13.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_ITALIC, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+        self.m_staticText13.SetMinSize( wx.Size( -1,20 ) )
+
+        bSizer71.Add( self.m_staticText13, 0, wx.ALL, 5 )
+
+
+        bSizer8.Add( bSizer71, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         bSizer81 = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -78,22 +91,22 @@ class outputPanel ( wx.Panel ):
 
         bSizer12 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.sadsg = wx.StaticText( self, wx.ID_ANY, _(u"Score:"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.sadsg = wx.StaticText( self, wx.ID_ANY, _(u"BMI-Score:"), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.sadsg.Wrap( -1 )
 
-        self.sadsg.SetFont( wx.Font( 18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
-        self.sadsg.SetMinSize( wx.Size( 70,30 ) )
+        self.sadsg.SetFont( wx.Font( 15, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+        self.sadsg.SetMinSize( wx.Size( 140,30 ) )
 
-        bSizer12.Add( self.sadsg, 0, wx.BOTTOM|wx.LEFT|wx.ALIGN_BOTTOM, 5 )
+        bSizer12.Add( self.sadsg, 0, wx.ALIGN_BOTTOM|wx.LEFT, 5 )
 
 
-        bSizer8.Add( bSizer12, 1, wx.BOTTOM|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+        bSizer8.Add( bSizer12, 1, wx.BOTTOM, 5 )
 
         self.score_box = wx.TextCtrl( self, wx.ID_ANY, _(u"n/a"), wx.DefaultPosition, wx.DefaultSize, wx.TE_READONLY )
         self.score_box.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
         self.score_box.SetMinSize( wx.Size( 200,-1 ) )
 
-        bSizer8.Add( self.score_box, 0, wx.ALL|wx.EXPAND, 5 )
+        bSizer8.Add( self.score_box, 0, wx.EXPAND|wx.BOTTOM|wx.RIGHT|wx.LEFT, 5 )
 
 
         self.SetSizer( bSizer8 )

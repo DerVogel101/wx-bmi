@@ -38,7 +38,7 @@ class InputHandler(InputFrameModule.inputPanel):
         values = [0,0,0]
         for i, e in enumerate([self.txt_age, self.txt_height, self.txt_mass]):
             try:
-                # Edge cases Adge
+                # Edge cases Age
                 ### Empty input
                 if i == 0 and not e.GetValue():
                     values[i] = None
@@ -46,12 +46,15 @@ class InputHandler(InputFrameModule.inputPanel):
                 values[i] = float(e.GetValue())
                 ### Underage
                 if i == 0 and values[i] < 18:
-                    wx.MessageBox("This calculator only covers persons older than 18. If you need to calculate the BMI of a child, try: https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.ICON_ERROR)
+                    wx.MessageBox("Mit diesem Rechner können Sie den BMI ausschließlich für Personen ab 18 \
+Jahren berechnen. Für Kinder probieren Sie bitte: \
+https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.ICON_ERROR)
                     return
             except ValueError:
-                wx.MessageBox(f"Invalid input for {e.GetToolTip().GetTip()}", "Error", wx.OK | wx.ICON_ERROR)
+                wx.MessageBox(f"Ungültige eingabe für: {e.GetToolTip().GetTip()}", "Error", wx.OK | wx.ICON_ERROR)
                 return
         
+        # Get Sex
         try:
             match self.radiobox_sex.GetStringSelection()[0]:
                 case 'M':
@@ -60,11 +63,26 @@ class InputHandler(InputFrameModule.inputPanel):
                     shared_bmi.set_sex("f")
                 case _:
                     shared_bmi.set_sex(None)
-
         except bmi_calculator.SexError as e:
             wx.MessageBox(str(e), "Error", wx.OK | wx.ICON_ERROR)
             return
 
+        # Get Body Type
+        try:
+            match self.radiobox_body_type.GetStringSelection()[0]:
+                case 'Z':
+                    shared_bmi.set_body_type("s")
+                case 'N':
+                    shared_bmi.set_body_type("M")
+                case 'K':
+                    shared_bmi.set_body_type("L")
+                case _:
+                    pass # This can never happen
+        except Exception as e:
+            wx.MessageBox(str(e), "Error", wx.OK | wx.ICON_ERROR)
+            return
+
+        # Set Int values and calculate
         try:
             shared_bmi.set_age(values[0])
             shared_bmi.set_size(values[1] / 100) # Convert cm to m
@@ -100,7 +118,10 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         # Update score 
         self.output_frame.score_box.SetValue(str(event.score))
         # Update ideal weight
-        self.output_frame.ideal_weight_box.SetValue(str(shared_bmi.get_ideal_weight()))
+        try:
+            self.output_frame.ideal_weight_box.SetValue(str(shared_bmi.get_ideal_weight()))
+        except bmi_calculator.AgeDiscriminationError:
+            self.output_frame.ideal_weight_box.SetValue(str("Alter benötigt"))
 
         # Get table
         table = shared_bmi.bmi_cat.selected_categories
@@ -108,8 +129,8 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         # Technically not needed but alows for changes in table without needing to touch this code
         self.output_frame.bmi_table.ClearGrid()
         # Update col headers
-        self.output_frame.bmi_table.SetColLabelValue(0, "Min")
-        self.output_frame.bmi_table.SetColLabelValue(1, "Max")
+        self.output_frame.bmi_table.SetColLabelValue(0, "Von")
+        self.output_frame.bmi_table.SetColLabelValue(1, "Bis")
         # Update row 
         for i, e in enumerate(table):
             self.output_frame.bmi_table.SetRowLabelValue(i, e[0])
@@ -117,11 +138,15 @@ class MainFrame(MainFrameModule.bmiMainFrame):
             self.output_frame.bmi_table.SetCellValue(i, 1, str(e[1][1]).replace("None", "-"))
             min_val = e[1][0] if e[1][0] is not None else float('-inf')
             max_val = e[1][1] if e[1][1] is not None else float('inf')
+            col = None
             if min_val <= event.score <= max_val:
+                # Highlight the row, that the score is in
                 col = wx.SystemSettings.GetColour(wx.SYS_COLOUR_HIGHLIGHT)
-
-                self.output_frame.bmi_table.SetCellBackgroundColour(i, 0, col)  # Highlight row in yellow
-                self.output_frame.bmi_table.SetCellBackgroundColour(i, 1, col)  # Highlight row in yellow
+            else:
+                # Reset color from previous highlighting
+                col = wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW)
+            self.output_frame.bmi_table.SetCellBackgroundColour(i, 0, col)
+            self.output_frame.bmi_table.SetCellBackgroundColour(i, 1, col)
 
         self.output_frame.bmi_table.Enable(True)
 

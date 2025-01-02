@@ -20,7 +20,7 @@ _ = gettext.gettext
 class bmiMainFrame ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"BMI Rechner (KI DLC jetzt verfügbar)"), pos = wx.DefaultPosition, size = wx.Size( 770,420 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"BMI Rechner"), pos = wx.DefaultPosition, size = wx.Size( 770,420 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.Size( 770,420 ), wx.DefaultSize )
 
