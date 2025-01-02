@@ -105,12 +105,8 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         # Get table
         table = shared_bmi.bmi_cat.selected_categories
         # Clear table, adjust size
-        # Technicaly not needed but alows for changes in table without neding to touch this code
+        # Technically not needed but alows for changes in table without needing to touch this code
         self.output_frame.bmi_table.ClearGrid()
-        self.output_frame.bmi_table.DeleteCols(0, 99)
-        self.output_frame.bmi_table.DeleteRows(0, 99)
-        self.output_frame.bmi_table.AppendCols(2)
-        self.output_frame.bmi_table.AppendRows(len(table))
         # Update col headers
         self.output_frame.bmi_table.SetColLabelValue(0, "Min")
         self.output_frame.bmi_table.SetColLabelValue(1, "Max")

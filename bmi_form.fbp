@@ -2,7 +2,7 @@
 <wxFormBuilder_Project>
   <FileVersion major="1" minor="18"/>
   <object class="Project" expanded="true">
-    <property name="code_generation">C++</property>
+    <property name="code_generation">Python</property>
     <property name="cpp_class_decoration">; </property>
     <property name="cpp_disconnect_events">0</property>
     <property name="cpp_event_generation">connect</property>
@@ -47,10 +47,10 @@
       <property name="hidden">0</property>
       <property name="id">wxID_ANY</property>
       <property name="maximum_size"></property>
-      <property name="minimum_size">980,700</property>
+      <property name="minimum_size">770,420</property>
       <property name="name">bmiMainFrame</property>
       <property name="pos"></property>
-      <property name="size">-1,-1</property>
+      <property name="size">770,420</property>
       <property name="style">wxDEFAULT_FRAME_STYLE</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">BMI Rechner (KI DLC jetzt verfügbar)</property>
@@ -60,7 +60,7 @@
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
-      <object class="wxBoxSizer" expanded="false">
+      <object class="wxBoxSizer" expanded="true">
         <property name="minimum_size"></property>
         <property name="name">content_box</property>
         <property name="orient">wxVERTICAL</property>
@@ -1004,7 +1004,7 @@
             <property name="row_label_values"></property>
             <property name="row_label_vert_alignment">wxALIGN_CENTER</property>
             <property name="row_sizes">27,26,27</property>
-            <property name="rows">10</property>
+            <property name="rows">6</property>
             <property name="show">1</property>
             <property name="size">-1,-1</property>
             <property name="subclass">; ; forward_declare</property>

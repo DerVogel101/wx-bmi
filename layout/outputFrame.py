@@ -36,7 +36,7 @@ class outputPanel ( wx.Panel ):
         self.bmi_table = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
 
         # Grid
-        self.bmi_table.CreateGrid( 10, 2 )
+        self.bmi_table.CreateGrid( 6, 2 )
         self.bmi_table.EnableEditing( False )
         self.bmi_table.EnableGridLines( True )
         self.bmi_table.EnableDragGridSize( False )
