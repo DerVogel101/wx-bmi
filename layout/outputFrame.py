@@ -89,6 +89,18 @@ class outputPanel ( wx.Panel ):
 
         bSizer8.Add( bSizer81, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
+        bSizer82 = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, _(u"*berechnet mit der Creff Formel"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText12.Wrap( -1 )
+
+        self.m_staticText12.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_ITALIC, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer82.Add( self.m_staticText12, 0, wx.ALL, 5 )
+
+
+        bSizer8.Add( bSizer82, 1, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
         bSizer12 = wx.BoxSizer( wx.HORIZONTAL )
 
         self.sadsg = wx.StaticText( self, wx.ID_ANY, _(u"BMI-Score:"), wx.DefaultPosition, wx.DefaultSize, 0 )
