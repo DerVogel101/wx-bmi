@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Literal
 
 
 class BmiCatSimple:
@@ -101,8 +101,12 @@ class SizeError(BmiError):
 class WeightError(BmiError):
     pass
 
+class BodyTypeError(BmiError):
+    pass
+
 class BmiCalc:
     def __init__(self):
+        self.body_type = None
         self.__age = None
         self.__weight = None
         self.__sex = None
@@ -115,7 +119,7 @@ class BmiCalc:
             raise SizeError("Size is not set. Please set a size in meters")
         if self.__weight is None:
             raise WeightError("Weight is not set. Please set a weight in kg")
-        return self.__weight / (self.__size ** 2)
+        return round(self.__weight / (self.__size ** 2), 2)
 
     def get_category(self) -> str:
         """
@@ -145,7 +149,7 @@ class BmiCalc:
         """
         return self.__sex
 
-    def set_sex(self, sex_string: Optional[str]) -> None:
+    def set_sex(self, sex_string: Optional[Literal['m', 'f']]) -> None:
         """ Set new or reset sex_offset
         :param sex_string: new sex_offset as 'm' or 'f' or None
         """
@@ -186,14 +190,29 @@ class BmiCalc:
             raise WeightError(f"The weight: {weight} is not a valid weight. Please use a positive float number")
         self.__weight = weight
 
+    def set_body_type(self, body_type: Literal['s', 'M' ,'L']) -> None:
+        """ Set new body type
+        :param body_type: new body type as 's', 'M' or 'L'; 's' for small, 'M' for medium, 'L' for large
+        """
+        if body_type not in ['s', 'M', 'L']:
+            raise BodyTypeError(f"The body type: {body_type} is not right. Please use 's', 'M' or 'L'")
+        self.body_type = body_type
+
     def get_ideal_weight(self) -> float:
-        """ calculate ideal weight
+        """
+        calculate ideal weight using the Creff formula
         :return: ideal weight in kg
         """
-        ideal_bmi = self.bmi_cat[self.get_bmi()][1]
-        if ideal_bmi is None:
+        if self.__age is None or self.__age < 0:
             raise AgeDiscriminationError("Ideal weight is not available for this age")
-        return ideal_bmi * (self.__size ** 2)
+        if self.__size is None or self.__size < 0:
+            raise SizeError("Ideal weight is not available for this size")
+        body_type_multiplier = 1
+        if self.body_type == 's':
+            body_type_multiplier = 0.9
+        elif self.body_type == 'L':
+            body_type_multiplier = 1.1
+        return round(float((((self.__size - 1) * 100) + (self.__age / 10)) * 0.9 * body_type_multiplier), 1)
 
 
 if __name__ == '__main__':
