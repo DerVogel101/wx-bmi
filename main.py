@@ -54,9 +54,9 @@ class InputHandler(InputFrameModule.inputPanel):
         
         try:
             match self.radiobox_sex.GetStringSelection()[0]:
-                case 'Männlich':
+                case 'M':
                     shared_bmi.set_sex("m")
-                case 'Weiblich':
+                case 'W':
                     shared_bmi.set_sex("f")
                 case _:
                     shared_bmi.set_sex(None)
