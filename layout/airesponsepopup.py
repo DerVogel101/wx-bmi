@@ -21,9 +21,9 @@ _ = gettext.gettext
 class AiResponsePopUp ( wx.Dialog ):
 
     def __init__( self, parent ):
-        wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Ki Auswertung"), pos = wx.DefaultPosition, size = wx.Size( 600,400 ), style = wx.DEFAULT_DIALOG_STYLE )
+        wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Ki Auswertung"), pos = wx.DefaultPosition, size = wx.Size( 650,460 ), style = wx.DEFAULT_DIALOG_STYLE )
 
-        self.SetSizeHints( wx.Size( 600,400 ), wx.DefaultSize )
+        self.SetSizeHints( wx.Size( 650,460 ), wx.DefaultSize )
 
         bSizer11 = wx.BoxSizer( wx.VERTICAL )
 

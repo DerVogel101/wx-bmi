@@ -20,9 +20,9 @@ _ = gettext.gettext
 class AiPopUp ( wx.Dialog ):
 
     def __init__( self, parent ):
-        wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"AI DLC Einstellungen"), pos = wx.DefaultPosition, size = wx.Size( 520,160 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
+        wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"AI DLC Einstellungen"), pos = wx.DefaultPosition, size = wx.Size( 520,220 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
 
-        self.SetSizeHints( wx.Size( 520,160 ), wx.DefaultSize )
+        self.SetSizeHints( wx.Size( 520,220 ), wx.DefaultSize )
 
         bSizer9 = wx.BoxSizer( wx.VERTICAL )
 
@@ -35,6 +35,36 @@ class AiPopUp ( wx.Dialog ):
 
         self.ai_key_field = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_PASSWORD )
         bSizer9.Add( self.ai_key_field, 0, wx.ALL|wx.EXPAND, 5 )
+
+        bSizer12 = wx.BoxSizer( wx.VERTICAL )
+
+        self.m_staticText14 = wx.StaticText( self, wx.ID_ANY, _(u"Persöhnlichkeit der Ai bestimmen:"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText14.Wrap( -1 )
+
+        self.m_staticText14.SetFont( wx.Font( 12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+
+        bSizer12.Add( self.m_staticText14, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
+
+        bSizer13 = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.m_staticText15 = wx.StaticText( self, wx.ID_ANY, _(u"Schreibe die antwort"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText15.Wrap( -1 )
+
+        bSizer13.Add( self.m_staticText15, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+        self.ai_personality = wx.TextCtrl( self, wx.ID_ANY, _(u"als wärst du ein Fitness Influenza"), wx.DefaultPosition, wx.DefaultSize, wx.TE_BESTWRAP )
+        bSizer13.Add( self.ai_personality, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+        self.m_staticText16 = wx.StaticText( self, wx.ID_ANY, _(u"."), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText16.Wrap( -1 )
+
+        bSizer13.Add( self.m_staticText16, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+
+        bSizer12.Add( bSizer13, 1, wx.EXPAND, 5 )
+
+
+        bSizer9.Add( bSizer12, 1, wx.EXPAND, 5 )
 
         bSizer10 = wx.BoxSizer( wx.HORIZONTAL )
 

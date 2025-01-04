@@ -138,6 +138,7 @@ class AiPopUp(AiPopUpModule.AiPopUp):
 
     def continue_prog( self, event ):
         self.parent.ai_dlc.set_api_key(self.ai_key_field.GetValue())
+        self.parent.ai_dlc.personallity = self.ai_personality.GetValue()
         self.close_source = 'continue'
         self.Close()
         event.Skip()
