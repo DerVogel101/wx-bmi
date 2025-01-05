@@ -23,14 +23,25 @@ class InputHandler(InputFrameModule.inputPanel):
         self.button_calc.Bind(wx.EVT_BUTTON, self.on_calc)
         self.txt_age.Bind(wx.EVT_CHAR, self.only_allow_number)
         self.txt_height.Bind(wx.EVT_CHAR, self.only_allow_number)
-        self.txt_mass.Bind(wx.EVT_CHAR, self.only_allow_number)
+        self.txt_mass.Bind(wx.EVT_CHAR, self.only_allow_float)
         self.Show()
 
     def only_allow_number(self, event):
         key_code = event.GetKeyCode()
         # Check if the key is a number, backspace, or a control key (e.g., arrow keys)
-        if (48 <= key_code <= 57) or (key_code in [wx.WXK_BACK, wx.WXK_RETURN]):
+        if key_code in range(48, 58) or key_code in [wx.WXK_BACK, wx.WXK_RETURN]:
             event.Skip()  # Allow the input
+        else:
+            event.StopPropagation()  # Reject the input
+
+    def only_allow_float(self, event):
+        key_code = event.GetKeyCode()
+        # Check if the key is a number, backspace, comma, period, or a control key (e.g., arrow keys)
+        if key_code in range(48, 58) or key_code in [wx.WXK_BACK, wx.WXK_RETURN, wx.WXK_DECIMAL, wx.WXK_NUMPAD_DECIMAL, 44, 46]:
+            if key_code == 44:  # If comma is pressed, replace it with a period
+                event.GetEventObject().WriteText('.')
+            else:
+                event.Skip()  # Allow the input
         else:
             event.StopPropagation()  # Reject the input
 
