@@ -1,7 +1,7 @@
 # BMI Calculator
 This project implements a simple BMI calculator according to [these specifications](https://github.com/DerVogel101/wx-bmi/blob/master/other/task_BMI_Total_py.html).
 
-As an additional gimmick, under the [AI branch](https://github.com/DerVogel101/wx-bmi/tree/ai), a feature was implemented that offers the user (given an OpenAI API key is provided) recommendations for improving their health and BMI score.
+As an additional gimmick, under the [Main branch](https://github.com/DerVogel101/wx-bmi/), a feature was implemented that offers the user (given an OpenAI API key is provided) recommendations for improving their health and BMI score.
 
 ### Installation
 1. Clone this repository and step into the project's root.
