@@ -1,0 +1,737 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class node7 as "layout.aipopup.AiPopUp" {
+   cancel_butt: 
+   m_staticText15: 
+   m_staticText14: 
+   m_staticText16: 
+   continue_butt: 
+   ai_personality: 
+   m_staticText13: 
+   ai_key_field: 
+   __init__( self, parent ): 
+   __del__( self ): 
+   shutdown_prog( self, event ): 
+   deny_ai( self, event ): 
+   continue_prog( self, event ): 
+}
+class node1 as "layout.airesponsepopup.AiResponsePopUp" {
+   m_htmlWin1: 
+   __init__( self, parent ): 
+   __del__( self ): 
+}
+class node11 as "layout.inputFrame.inputPanel" {
+   radiobox_body_type: 
+   m_staticText6: 
+   m_staticText5: 
+   m_staticText17: 
+   txt_age: 
+   txt_mass: 
+   m_staticText1: 
+   m_staticText4: 
+   txt_height: 
+   radiobox_sex: 
+   button_calc: 
+   m_staticText41: 
+   __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ): 
+   __del__( self ): 
+}
+class node10 as "layout.mainFrame.bmiMainFrame" {
+   m_staticText8: 
+   main_content_area: 
+   __init__( self, parent ): 
+   __del__( self ): 
+}
+class node17 as "layout.outputFrame.outputPanel" {
+   bmi_table: 
+   m_staticText18: 
+   m_staticText9: 
+   score_box: 
+   sadsg: 
+   ideal_weight_box: 
+   m_staticText13: 
+   m_staticText12: 
+   __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ): 
+   __del__( self ): 
+}
+class node8 as "main.AiPopUp" {
+   parent: 
+   close_source: 
+   __init__(self, parent): 
+   deny_ai(self, event): 
+   shutdown_prog(self, event): 
+   continue_prog(self, event): 
+}
+class node12 as "main.AiResponsePopUp" {
+   m_htmlWin1: 
+   parent: 
+   sizer: 
+   __init__(self, parent): 
+   set_html_content(self, html_content): 
+}
+class node15 as "main.BmiUpdateEvent" {
+   score: 
+   __init__(self, score): 
+}
+class node6 as "main.InputHandler" {
+   ai_dlc: 
+   __init__(self, parent): 
+   only_allow_number(self, event): 
+   only_allow_float(self, event): 
+   on_calc(self, _): 
+}
+class node22 as "main.MainFrame" {
+   output_frame: 
+   ai_response_dialog: 
+   ai_dialog: 
+   enable_ai: 
+   ai_dlc: 
+   input_frame: 
+   __init__(self, parent): 
+   on_bmi_update(self, event): 
+}
+class node0 as "main.OutputFrame" {
+   __init__(self, parent): 
+}
+class object {
+   __doc__: 
+   __dict__: 
+   __module__: 
+   __annotations__: 
+   __class__(self): 
+   __class__(self, __type: type[object]): 
+   __init__(self): 
+   __new__(cls): 
+   __setattr__(self, __name: str, __value: Any): 
+   __delattr__(self, __name: str): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __str__(self): 
+   __repr__(self): 
+   __hash__(self): 
+   __format__(self, __format_spec: str): 
+   __getattribute__(self, __name: str): 
+   __sizeof__(self): 
+   __reduce__(self): 
+   __reduce_ex__(self, __protocol: SupportsIndex): 
+   __getstate__(self): 
+   __dir__(self): 
+   __init_subclass__(cls): 
+   __subclasshook__(cls, __subclass: type): 
+}
+class node18 as "typing.Hashable" {
+   __hash__(self): 
+}
+class node9 as "wx.core.Dialog" {
+   AffirmativeId: 
+   ContentWindow: 
+   EscapeId: 
+   LayoutAdaptationDone: 
+   LayoutAdaptationLevel: 
+   LayoutAdaptationMode: 
+   MainButtonIds: 
+   ReturnCode: 
+   __init__(self, *args, **kw): 
+   AddMainButtonId(self, id): 
+   CanDoLayoutAdaptation(self): 
+   Centre(self, direction=BOTH): 
+   Create(self, parent, id=ID_ANY, title=EmptyString, pos=DefaultPosition, size=DefaultSize, style=DEFAULT_DIALOG_STYLE, name=DialogNameStr): 
+   CreateButtonSizer(self, flags): 
+   CreateSeparatedButtonSizer(self, flags): 
+   CreateSeparatedSizer(self, sizer): 
+   CreateStdDialogButtonSizer(self, flags): 
+   CreateTextSizer(self, message, widthMax=-1): 
+   DoLayoutAdaptation(self): 
+   EndModal(self, retCode): 
+   GetAffirmativeId(self): 
+   GetContentWindow(self): 
+   GetEscapeId(self): 
+   GetLayoutAdaptationDone(self): 
+   GetLayoutAdaptationLevel(self): 
+   GetLayoutAdaptationMode(self): 
+   GetMainButtonIds(self): 
+   GetReturnCode(self): 
+   Iconize(self, iconize=True): 
+   IsIconized(self): 
+   IsMainButtonId(self, id): 
+   IsModal(self): 
+   SetAffirmativeId(self, id): 
+   SetEscapeId(self, id): 
+   SetIcon(self, icon): 
+   SetIcons(self, icons): 
+   SetLayoutAdaptationDone(self, done): 
+   SetLayoutAdaptationLevel(self, level): 
+   SetLayoutAdaptationMode(self, mode): 
+   SetReturnCode(self, retCode): 
+   Show(self, show=True): 
+   ShowModal(self): 
+   ShowWindowModal(self): 
+   EnableLayoutAdaptation(enable): 
+   GetLayoutAdapter(): 
+   IsLayoutAdaptationEnabled(): 
+   SetLayoutAdapter(adapter): 
+   GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
+   __enter__(self): 
+   __exit__(self, exc_type, exc_val, exc_tb): 
+}
+class node24 as "wx.core.Event" {
+   EventObject: 
+   EventType: 
+   Id: 
+   Skipped: 
+   Timestamp: 
+   __init__(self, id=0, eventType=wxEVT_NULL): 
+   Clone(self): 
+   GetEventObject(self): 
+   GetEventType(self): 
+   GetEventCategory(self): 
+   GetId(self): 
+   GetSkipped(self): 
+   GetTimestamp(self): 
+   IsCommandEvent(self): 
+   ResumePropagation(self, propagationLevel): 
+   SetEventObject(self, object): 
+   SetEventType(self, type): 
+   SetId(self, id): 
+   SetTimestamp(self, timeStamp=0): 
+   ShouldPropagate(self): 
+   Skip(self, skip=True): 
+   StopPropagation(self): 
+}
+class node2 as "wx.core.EvtHandler" {
+   EvtHandlerEnabled: 
+   NextHandler: 
+   PreviousHandler: 
+   __init__(self): 
+   QueueEvent(self, event): 
+   AddPendingEvent(self, event): 
+   ProcessEvent(self, event): 
+   ProcessEventLocally(self, event): 
+   SafelyProcessEvent(self, event): 
+   ProcessPendingEvents(self): 
+   DeletePendingEvents(self): 
+   Connect(self, id, lastId, eventType, func): 
+   Disconnect(self, id, lastId=-1, eventType=wxEVT_NULL, func=None): 
+   GetEvtHandlerEnabled(self): 
+   GetNextHandler(self): 
+   GetPreviousHandler(self): 
+   SetEvtHandlerEnabled(self, enabled): 
+   SetNextHandler(self, handler): 
+   SetPreviousHandler(self, handler): 
+   Unlink(self): 
+   IsUnlinked(self): 
+   AddFilter(filter): 
+   RemoveFilter(filter): 
+   Bind(self, event, handler, source=None, id=wx.ID_ANY, id2=wx.ID_ANY): 
+   Unbind(self, event, source=None, id=wx.ID_ANY, id2=wx.ID_ANY, handler=None): 
+   TryBefore(self, event): 
+   TryAfter(self, event): 
+}
+class node14 as "wx.core.Frame" {
+   MenuBar: 
+   StatusBar: 
+   StatusBarPane: 
+   ToolBar: 
+   __init__(self, *args, **kw): 
+   Centre(self, direction=BOTH): 
+   Create(self, parent, id=ID_ANY, title=EmptyString, pos=DefaultPosition, size=DefaultSize, style=DEFAULT_FRAME_STYLE, name=FrameNameStr): 
+   CreateStatusBar(self, number=1, style=STB_DEFAULT_STYLE, id=0, name=StatusBarNameStr): 
+   CreateToolBar(self, style=TB_DEFAULT_STYLE, id=ID_ANY, name=ToolBarNameStr): 
+   DoGiveHelp(self, text, show): 
+   GetClientAreaOrigin(self): 
+   GetMenuBar(self): 
+   GetStatusBar(self): 
+   GetStatusBarPane(self): 
+   GetToolBar(self): 
+   OnCreateStatusBar(self, number, style, id, name): 
+   OnCreateToolBar(self, style, id, name): 
+   ProcessCommand(self, id): 
+   SetMenuBar(self, menuBar): 
+   SetStatusBar(self, statusBar): 
+   SetStatusBarPane(self, n): 
+   SetStatusText(self, text, number=0): 
+   SetStatusWidths(self, widths): 
+   SetToolBar(self, toolBar): 
+   PushStatusText(self, text, number=0): 
+   PopStatusText(self, number=0): 
+   GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
+}
+class node20 as "wx.core.NonOwnedWindow" {
+   SetShape(self, *args, **kw): 
+}
+class node16 as "wx.core.Object" {
+   ClassInfo: 
+   ClassName: 
+   RefData: 
+   __init__(self, *args, **kw): 
+   GetClassInfo(self): 
+   GetRefData(self): 
+   IsSameAs(self, obj): 
+   Ref(self, clone): 
+   SetRefData(self, data): 
+   UnRef(self): 
+   UnShare(self): 
+   GetClassName(self): 
+   Destroy(self): 
+}
+class node23 as "wx.core.Panel" {
+   __init__(self, *args, **kw): 
+   AcceptsFocus(self): 
+   Create(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=TAB_TRAVERSAL, name=PanelNameStr): 
+   InitDialog(self): 
+   Layout(self): 
+   SetFocus(self): 
+   SetFocusIgnoringChildren(self): 
+   GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
+}
+class node19 as "wx.core.PyEvent" {
+   __init__(self, id=0, eventType=wxEVT_NULL): 
+   __getattr__(self, name): 
+   __delattr__(self, name): 
+   __setattr__(self, name, value): 
+   Clone(self): 
+   Clone(self): 
+   _getAttrDict(self): 
+}
+class node5 as "wx.core.TopLevelWindow" {
+   DefaultItem: 
+   Icon: 
+   Title: 
+   TmpDefaultItem: 
+   OSXModified: 
+   MacMetalAppearance: 
+   TopLevelWindow.GeometrySerializer: 
+   __init__(self, *args, **kw): 
+   Create(self, parent, id=ID_ANY, title=EmptyString, pos=DefaultPosition, size=DefaultSize, style=DEFAULT_FRAME_STYLE, name=FrameNameStr): 
+   CanSetTransparent(self): 
+   CenterOnScreen(self, direction=BOTH): 
+   CentreOnScreen(self, direction=BOTH): 
+   EnableCloseButton(self, enable=True): 
+   EnableMaximizeButton(self, enable=True): 
+   EnableMinimizeButton(self, enable=True): 
+   GetDefaultItem(self): 
+   GetIcon(self): 
+   GetIcons(self): 
+   GetTitle(self): 
+   Iconize(self, iconize=True): 
+   IsActive(self): 
+   IsAlwaysMaximized(self): 
+   IsFullScreen(self): 
+   IsIconized(self): 
+   IsMaximized(self): 
+   Layout(self): 
+   Maximize(self, maximize=True): 
+   RequestUserAttention(self, flags=USER_ATTENTION_INFO): 
+   Restore(self): 
+   RestoreToGeometry(self, ser): 
+   SaveGeometry(self, ser): 
+   SetDefaultItem(self, win): 
+   SetTmpDefaultItem(self, win): 
+   GetTmpDefaultItem(self): 
+   SetIcon(self, icon): 
+   SetIcons(self, icons): 
+   SetMaxSize(self, size): 
+   SetMinSize(self, size): 
+   SetSizeHints(self, *args, **kw): 
+   SetTitle(self, title): 
+   SetTransparent(self, alpha): 
+   ShouldPreventAppExit(self): 
+   OSXSetModified(self, modified): 
+   OSXIsModified(self): 
+   SetRepresentedFilename(self, filename): 
+   ShowWithoutActivating(self): 
+   EnableFullScreenView(self, enable=True, style=FULLSCREEN_ALL): 
+   ShowFullScreen(self, show, style=FULLSCREEN_ALL): 
+   GetContentProtection(self): 
+   SetContentProtection(self, contentProtection): 
+   GetDefaultSize(): 
+   MacSetMetalAppearance(self, on): 
+   MacGetMetalAppearance(self): 
+   MacGetUnifiedAppearance(self): 
+   MacGetTopLevelWindowRef(self): 
+   GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
+}
+class node13 as "wx.core.Trackable"
+class node21 as "wx.core.Window" {
+   Rect: 
+   ClientRect: 
+   SetDimensions: 
+   __bool__: 
+   AcceleratorTable: 
+   AutoLayout: 
+   BackgroundColour: 
+   BackgroundStyle: 
+   EffectiveMinSize: 
+   BestSize: 
+   BestVirtualSize: 
+   Border: 
+   Caret: 
+   CharHeight: 
+   CharWidth: 
+   Children: 
+   ClientAreaOrigin: 
+   ClientSize: 
+   Constraints: 
+   ContainingSizer: 
+   Cursor: 
+   DefaultAttributes: 
+   DropTarget: 
+   EventHandler: 
+   ExtraStyle: 
+   Font: 
+   ForegroundColour: 
+   GrandParent: 
+   TopLevelParent: 
+   Handle: 
+   HelpText: 
+   Id: 
+   Label: 
+   LayoutDirection: 
+   MaxHeight: 
+   MaxSize: 
+   MaxWidth: 
+   MinHeight: 
+   MinSize: 
+   MinWidth: 
+   Name: 
+   Parent: 
+   Position: 
+   ScreenPosition: 
+   ScreenRect: 
+   Size: 
+   Sizer: 
+   ThemeEnabled: 
+   ToolTip: 
+   UpdateClientRect: 
+   UpdateRegion: 
+   Validator: 
+   VirtualSize: 
+   WindowStyle: 
+   WindowStyleFlag: 
+   WindowVariant: 
+   Shown: 
+   Enabled: 
+   TopLevel: 
+   MinClientSize: 
+   MaxClientSize: 
+   Window.ChildrenRepositioningGuard: 
+   __init__(self, *args, **kw): 
+   AcceptsFocus(self): 
+   AcceptsFocusFromKeyboard(self): 
+   AcceptsFocusRecursively(self): 
+   DisableFocusFromKeyboard(self): 
+   IsFocusable(self): 
+   CanAcceptFocus(self): 
+   CanAcceptFocusFromKeyboard(self): 
+   HasFocus(self): 
+   SetCanFocus(self, canFocus): 
+   EnableVisibleFocus(self, enable): 
+   SetFocus(self): 
+   SetFocusFromKbd(self): 
+   AddChild(self, child): 
+   DestroyChildren(self): 
+   FindWindow(self, *args, **kw): 
+   GetChildren(self): 
+   RemoveChild(self, child): 
+   GetGrandParent(self): 
+   GetNextSibling(self): 
+   GetParent(self): 
+   GetPrevSibling(self): 
+   IsDescendant(self, win): 
+   Reparent(self, newParent): 
+   AlwaysShowScrollbars(self, hflag=True, vflag=True): 
+   GetScrollPos(self, orientation): 
+   GetScrollRange(self, orientation): 
+   GetScrollThumb(self, orientation): 
+   CanScroll(self, orient): 
+   HasScrollbar(self, orient): 
+   IsScrollbarAlwaysShown(self, orient): 
+   ScrollLines(self, lines): 
+   ScrollPages(self, pages): 
+   ScrollWindow(self, dx, dy, rect=None): 
+   LineUp(self): 
+   LineDown(self): 
+   PageUp(self): 
+   PageDown(self): 
+   SetScrollPos(self, orientation, pos, refresh=True): 
+   SetScrollbar(self, orientation, position, thumbSize, range, refresh=True): 
+   BeginRepositioningChildren(self): 
+   EndRepositioningChildren(self): 
+   CacheBestSize(self, size): 
+   ClientToWindowSize(self, size): 
+   WindowToClientSize(self, size): 
+   Fit(self): 
+   FitInside(self): 
+   FromDIP(self, *args, **kw): 
+   ToDIP(self, *args, **kw): 
+   FromPhys(self, *args, **kw): 
+   ToPhys(self, *args, **kw): 
+   GetBestSize(self): 
+   GetBestHeight(self, width): 
+   GetBestWidth(self, height): 
+   GetClientSize(self): 
+   GetEffectiveMinSize(self): 
+   GetMaxClientSize(self): 
+   GetMaxSize(self): 
+   GetMinClientSize(self): 
+   GetMinSize(self): 
+   GetMinWidth(self): 
+   GetMinHeight(self): 
+   GetMaxWidth(self): 
+   GetMaxHeight(self): 
+   GetSize(self): 
+   GetVirtualSize(self): 
+   GetBestVirtualSize(self): 
+   GetContentScaleFactor(self): 
+   GetDPIScaleFactor(self): 
+   GetWindowBorderSize(self): 
+   InformFirstDirection(self, direction, size, availableOtherDir): 
+   InvalidateBestSize(self): 
+   PostSizeEvent(self): 
+   PostSizeEventToParent(self): 
+   SendSizeEvent(self, flags=0): 
+   SendSizeEventToParent(self, flags=0): 
+   SetClientSize(self, *args, **kw): 
+   SetContainingSizer(self, sizer): 
+   SetInitialSize(self, size=DefaultSize): 
+   SetMaxClientSize(self, size): 
+   SetMaxSize(self, size): 
+   SetMinClientSize(self, size): 
+   SetMinSize(self, size): 
+   SetSize(self, *args, **kw): 
+   SetSizeHints(self, *args, **kw): 
+   SetVirtualSize(self, *args, **kw): 
+   Center(self, dir=BOTH): 
+   CenterOnParent(self, dir=BOTH): 
+   Centre(self, direction=BOTH): 
+   CentreOnParent(self, direction=BOTH): 
+   GetPosition(self): 
+   GetRect(self): 
+   GetScreenPosition(self): 
+   GetScreenRect(self): 
+   GetClientAreaOrigin(self): 
+   GetClientRect(self): 
+   Move(self, *args, **kw): 
+   SetPosition(self, pt): 
+   ClientToScreen(self, *args, **kw): 
+   ConvertDialogToPixels(self, *args, **kw): 
+   ConvertPixelsToDialog(self, *args, **kw): 
+   ScreenToClient(self, *args, **kw): 
+   ClearBackground(self): 
+   Freeze(self): 
+   Thaw(self): 
+   IsFrozen(self): 
+   GetBackgroundColour(self): 
+   GetBackgroundStyle(self): 
+   GetCharHeight(self): 
+   GetCharWidth(self): 
+   GetDefaultAttributes(self): 
+   GetDPI(self): 
+   GetFont(self): 
+   GetForegroundColour(self): 
+   GetFullTextExtent(self, string, font=None): 
+   GetTextExtent(self, string): 
+   GetUpdateRegion(self): 
+   GetUpdateClientRect(self): 
+   HasTransparentBackground(self): 
+   Refresh(self, eraseBackground=True, rect=None): 
+   RefreshRect(self, rect, eraseBackground=True): 
+   Update(self): 
+   SetBackgroundColour(self, colour): 
+   SetBackgroundStyle(self, style): 
+   IsTransparentBackgroundSupported(self, reason=None): 
+   SetFont(self, font): 
+   SetForegroundColour(self, colour): 
+   SetOwnBackgroundColour(self, colour): 
+   InheritsBackgroundColour(self): 
+   UseBgCol(self): 
+   UseBackgroundColour(self): 
+   SetOwnFont(self, font): 
+   SetOwnForegroundColour(self, colour): 
+   UseForegroundColour(self): 
+   InheritsForegroundColour(self): 
+   SetPalette(self, pal): 
+   ShouldInheritColours(self): 
+   SetThemeEnabled(self, enable): 
+   GetThemeEnabled(self): 
+   CanSetTransparent(self): 
+   SetTransparent(self, alpha): 
+   GetEventHandler(self): 
+   HandleAsNavigationKey(self, event): 
+   HandleWindowEvent(self, event): 
+   ProcessWindowEvent(self, event): 
+   ProcessWindowEventLocally(self, event): 
+   PopEventHandler(self, deleteHandler=False): 
+   PushEventHandler(self, handler): 
+   RemoveEventHandler(self, handler): 
+   SetEventHandler(self, handler): 
+   SetNextHandler(self, handler): 
+   SetPreviousHandler(self, handler): 
+   GetExtraStyle(self): 
+   GetWindowStyleFlag(self): 
+   GetWindowStyle(self): 
+   HasExtraStyle(self, exFlag): 
+   HasFlag(self, flag): 
+   SetExtraStyle(self, exStyle): 
+   SetWindowStyleFlag(self, style): 
+   SetWindowStyle(self, style): 
+   ToggleWindowStyle(self, flag): 
+   MoveAfterInTabOrder(self, win): 
+   MoveBeforeInTabOrder(self, win): 
+   Navigate(self, flags=NavigationKeyEvent.IsForward): 
+   NavigateIn(self, flags=NavigationKeyEvent.IsForward): 
+   Lower(self): 
+   Raise(self): 
+   Hide(self): 
+   HideWithEffect(self, effect, timeout=0): 
+   IsEnabled(self): 
+   IsExposed(self, *args, **kw): 
+   IsShown(self): 
+   IsShownOnScreen(self): 
+   Disable(self): 
+   Enable(self, enable=True): 
+   Show(self, show=True): 
+   ShowWithEffect(self, effect, timeout=0): 
+   GetHelpText(self): 
+   SetHelpText(self, helpText): 
+   GetHelpTextAtPoint(self, point, origin): 
+   GetToolTip(self): 
+   GetToolTipText(self): 
+   SetToolTip(self, *args, **kw): 
+   UnsetToolTip(self): 
+   GetPopupMenuSelectionFromUser(self, *args, **kw): 
+   PopupMenu(self, *args, **kw): 
+   GetValidator(self): 
+   SetValidator(self, validator): 
+   TransferDataFromWindow(self): 
+   TransferDataToWindow(self): 
+   Validate(self): 
+   GetId(self): 
+   GetLabel(self): 
+   GetLayoutDirection(self): 
+   AdjustForLayoutDirection(self, x, width, widthTotal): 
+   GetName(self): 
+   GetWindowVariant(self): 
+   SetId(self, winid): 
+   SetLabel(self, label): 
+   SetLayoutDirection(self, dir): 
+   SetName(self, name): 
+   SetWindowVariant(self, variant): 
+   GetAcceleratorTable(self): 
+   GetAccessible(self): 
+   SetAcceleratorTable(self, accel): 
+   SetAccessible(self, accessible): 
+   CreateAccessible(self): 
+   GetOrCreateAccessible(self): 
+   Close(self, force=False): 
+   Destroy(self): 
+   IsBeingDeleted(self): 
+   GetDropTarget(self): 
+   SetDropTarget(self, target): 
+   DragAcceptFiles(self, accept): 
+   GetContainingSizer(self): 
+   GetSizer(self): 
+   SetSizer(self, sizer, deleteOld=True): 
+   SetSizerAndFit(self, sizer, deleteOld=True): 
+   GetConstraints(self): 
+   SetConstraints(self, constraints): 
+   Layout(self): 
+   SetAutoLayout(self, autoLayout): 
+   GetAutoLayout(self): 
+   CaptureMouse(self): 
+   GetCaret(self): 
+   GetCursor(self): 
+   HasCapture(self): 
+   ReleaseMouse(self): 
+   SetCaret(self, caret): 
+   SetCursor(self, cursor): 
+   WarpPointer(self, x, y): 
+   EnableTouchEvents(self, eventsMask): 
+   HitTest(self, *args, **kw): 
+   GetBorder(self, *args, **kw): 
+   DoUpdateWindowUI(self, event): 
+   GetHandle(self): 
+   HasMultiplePages(self): 
+   InheritAttributes(self): 
+   InitDialog(self): 
+   IsDoubleBuffered(self): 
+   SetDoubleBuffered(self, on): 
+   IsRetained(self): 
+   IsThisEnabled(self): 
+   IsTopLevel(self): 
+   OnInternalIdle(self): 
+   SendIdleEvents(self, event): 
+   RegisterHotKey(self, hotkeyId, modifiers, virtualKeyCode): 
+   UnregisterHotKey(self, hotkeyId): 
+   UpdateWindowUI(self, flags=UPDATE_UI_NONE): 
+   GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
+   FindFocus(): 
+   FindWindowById(id, parent=None): 
+   FindWindowByLabel(label, parent=None): 
+   FindWindowByName(name, parent=None): 
+   GetCapture(): 
+   NewControlId(count=1): 
+   UnreserveControlId(id, count=1): 
+   Create(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=0, name=PanelNameStr): 
+   SetRect(self, rect): 
+   SetClientRect(self, rect): 
+   GetGtkWidget(self): 
+   AssociateHandle(self, handle): 
+   DissociateHandle(self): 
+   GetTopLevelParent(self): 
+   MacIsWindowScrollbar(self, sb): 
+   SetDimensions(self, x, y, width, height, sizeFlags=SIZE_AUTO): 
+   __nonzero__(self): 
+   DestroyLater(self): 
+   DLG_UNIT(self, dlg_unit): 
+   PostCreate(self, pre): 
+   GetPositionTuple(self): 
+   GetSizeTuple(self): 
+   MoveXY(self, x, y): 
+   SetSizeWH(self, w, h): 
+   SetVirtualSizeWH(self, w, h): 
+   GetVirtualSizeTuple(self): 
+   SetToolTipString(self, string): 
+   ConvertDialogPointToPixels(self, point): 
+   ConvertDialogSizeToPixels(self, size): 
+   SetSizeHintsSz(self, minSize, maxSize=wx.DefaultSize, incSize=wx.DefaultSize): 
+   DoGetBestSize(self): 
+   DoGetBestClientSize(self): 
+   SendDestroyEvent(self): 
+   ProcessEvent(self, event): 
+}
+class node4 as "wx.core.WindowBase" {
+   AddChild(self, child): 
+   RemoveChild(self, child): 
+}
+
+node7   ^-[#595959,plain]-  node9  
+node1   ^-[#595959,plain]-  node9  
+node11  ^-[#595959,plain]-  node23 
+node10  ^-[#595959,plain]-  node14 
+node17  ^-[#595959,plain]-  node23 
+node8   ^-[#595959,plain]-  node7  
+node12  ^-[#595959,plain]-  node1  
+node15  ^-[#595959,plain]-  node19 
+node6   ^-[#595959,plain]-  node11 
+node22  ^-[#595959,plain]-  node10 
+node0   ^-[#595959,plain]-  node17 
+object  ^-[#595959,dashed]-  node18 
+node9   ^-[#595959,plain]-  node5  
+node24  ^-[#595959,plain]-  node16 
+node2   ^-[#595959,plain]-  node16 
+node2   ^-[#595959,plain]-  node13 
+node14  ^-[#595959,plain]-  node5  
+node20  ^-[#595959,plain]-  node21 
+node16  ^-[#595959,plain]-  object 
+node23  ^-[#595959,plain]-  node21 
+node19  ^-[#595959,plain]-  node24 
+node5   ^-[#595959,plain]-  node20 
+node13  ^-[#595959,plain]-  object 
+node21  ^-[#595959,plain]-  node4  
+node4   ^-[#595959,plain]-  node2  
+@enduml

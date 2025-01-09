@@ -24,3 +24,10 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+UML Diagram
+===========
+
+.. image:: /_static/py.png
+   :alt: UML Diagram
+   :align: center

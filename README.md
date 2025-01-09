@@ -5,6 +5,11 @@ As an additional gimmick, we implemented a feature that offers the user (given a
 
 We Provide a non AI version of the app that can be run without an API key, in a diffrent [branch](https://github.com/DerVogel101/wx-bmi/tree/no_ai).
 
+### Documentation
+The project is documented using docstrings and comments.
+The documentation can be viewed in the sphinx generated `./docs/build/html/index.html` file.
+At `./uml` you can find the UML diagrams for the project.
+
 ### Installation
 1. Clone this repository and step into the project's root.
 2. Create a new virtual environment: `python -m venv .venv`.
