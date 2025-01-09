@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#H:/programming/wx-bmi/main.py</OriginalElement>
+  <nodes>
+    <node x="645.0" y="5001.5">wx.core.TopLevelWindow</node>
+    <node x="-78.5" y="10655.5">main.InputHandler</node>
+    <node x="1972.0" y="5603.5">main.AiPopUp</node>
+    <node x="316.0" y="1191.5">wx.core.Event</node>
+    <node x="396.0" y="-14.5">typing.Hashable</node>
+    <node x="807.0" y="10005.5">main.OutputFrame</node>
+    <node x="382.0" y="779.5">wx.core.Object</node>
+    <node x="309.0" y="107.5">object</node>
+    <node x="1205.5" y="6379.5">layout.airesponsepopup.AiResponsePopUp</node>
+    <node x="-191.0" y="611.5">wx.core.EvtHandler</node>
+    <node x="316.0" y="1833.5">wx.core.PyEvent</node>
+    <node x="-65.0" y="1373.5">wx.core.WindowBase</node>
+    <node x="329.5" y="5665.5">wx.core.NonOwnedWindow</node>
+    <node x="1165.0" y="5075.5">wx.core.Dialog</node>
+    <node x="-195.0" y="9921.5">wx.core.Panel</node>
+    <node x="331.5" y="9895.5">layout.outputFrame.outputPanel</node>
+    <node x="774.0" y="7399.5">main.MainFrame</node>
+    <node x="-195.0" y="1521.5">wx.core.Window</node>
+    <node x="642.5" y="6451.5">wx.core.Frame</node>
+    <node x="1683.5" y="5519.5">layout.aipopup.AiPopUp</node>
+    <node x="372.5" y="2111.5">main.BmiUpdateEvent</node>
+    <node x="-168.5" y="10207.5">layout.inputFrame.inputPanel</node>
+    <node x="726.5" y="7207.5">layout.mainFrame.bmiMainFrame</node>
+    <node x="1264.5" y="6555.5">main.AiResponsePopUp</node>
+    <node x="-52.5" y="403.0">wx.core.Trackable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="wx.core.Event" target="wx.core.Object" relationship="REALIZATION">
+      <point x="0.0" y="-286.5" />
+      <point x="0.0" y="178.5" />
+    </edge>
+    <edge source="wx.core.TopLevelWindow" target="wx.core.NonOwnedWindow" relationship="REALIZATION">
+      <point x="-236.0" y="0.0" />
+      <point x="131.5" y="0.0" />
+    </edge>
+    <edge source="object" target="typing.Hashable" relationship="REALIZATION">
+      <point x="0.0" y="-310.5" />
+      <point x="0.0" y="32.5" />
+    </edge>
+    <edge source="layout.outputFrame.outputPanel" target="wx.core.Panel" relationship="REALIZATION">
+      <point x="-209.5" y="0.0" />
+      <point x="236.0" y="0.0" />
+    </edge>
+    <edge source="wx.core.Panel" target="wx.core.Window" relationship="REALIZATION">
+      <point x="0.0" y="-116.5" />
+      <point x="0.0" y="4176.5" />
+    </edge>
+    <edge source="wx.core.Frame" target="wx.core.TopLevelWindow" relationship="REALIZATION">
+      <point x="0.0" y="-346.5" />
+      <point x="0.0" y="696.5" />
+    </edge>
+    <edge source="wx.core.Dialog" target="wx.core.TopLevelWindow" relationship="REALIZATION">
+      <point x="-236.0" y="0.0" />
+      <point x="236.0" y="0.0" />
+    </edge>
+    <edge source="wx.core.EvtHandler" target="wx.core.Object" relationship="REALIZATION">
+      <point x="232.0" y="0.0" />
+      <point x="-99.0" y="0.0" />
+    </edge>
+    <edge source="main.OutputFrame" target="layout.outputFrame.outputPanel" relationship="REALIZATION">
+      <point x="-94.0" y="0.0" />
+      <point x="209.5" y="0.0" />
+    </edge>
+    <edge source="wx.core.NonOwnedWindow" target="wx.core.Window" relationship="REALIZATION">
+      <point x="-131.5" y="0.0" />
+      <point x="236.0" y="0.0" />
+    </edge>
+    <edge source="layout.aipopup.AiPopUp" target="wx.core.Dialog" relationship="REALIZATION">
+      <point x="-117.5" y="0.0" />
+      <point x="236.0" y="0.0" />
+    </edge>
+    <edge source="main.AiPopUp" target="layout.aipopup.AiPopUp" relationship="REALIZATION">
+      <point x="-109.0" y="0.0" />
+      <point x="117.5" y="0.0" />
+    </edge>
+    <edge source="main.MainFrame" target="layout.mainFrame.bmiMainFrame" relationship="REALIZATION">
+      <point x="0.0" y="-118.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="wx.core.EvtHandler" target="wx.core.Trackable" relationship="REALIZATION">
+      <point x="0.0" y="-346.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="layout.airesponsepopup.AiResponsePopUp" target="wx.core.Dialog" relationship="REALIZATION">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="622.5" />
+    </edge>
+    <edge source="wx.core.Trackable" target="object" relationship="REALIZATION">
+      <point x="93.5" y="0.0" />
+      <point x="-172.0" y="0.0" />
+    </edge>
+    <edge source="wx.core.WindowBase" target="wx.core.EvtHandler" relationship="REALIZATION">
+      <point x="0.0" y="-44.5" />
+      <point x="0.0" y="346.5" />
+    </edge>
+    <edge source="wx.core.PyEvent" target="wx.core.Event" relationship="REALIZATION">
+      <point x="0.0" y="-104.5" />
+      <point x="0.0" y="286.5" />
+    </edge>
+    <edge source="layout.mainFrame.bmiMainFrame" target="wx.core.Frame" relationship="REALIZATION">
+      <point x="0.0" y="-70.5" />
+      <point x="0.0" y="346.5" />
+    </edge>
+    <edge source="wx.core.Object" target="object" relationship="REALIZATION">
+      <point x="0.0" y="-178.5" />
+      <point x="0.0" y="310.5" />
+    </edge>
+    <edge source="wx.core.Window" target="wx.core.WindowBase" relationship="REALIZATION">
+      <point x="0.0" y="-4176.5" />
+      <point x="0.0" y="44.5" />
+    </edge>
+    <edge source="layout.inputFrame.inputPanel" target="wx.core.Panel" relationship="REALIZATION">
+      <point x="0.0" y="-190.5" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="main.BmiUpdateEvent" target="wx.core.PyEvent" relationship="REALIZATION">
+      <point x="0.0" y="-46.5" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="main.AiResponsePopUp" target="layout.airesponsepopup.AiResponsePopUp" relationship="REALIZATION">
+      <point x="0.0" y="-82.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="main.InputHandler" target="layout.inputFrame.inputPanel" relationship="REALIZATION">
+      <point x="0.0" y="-82.5" />
+      <point x="0.0" y="190.5" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal Groups" zoom="0.11532792925571113" showDependencies="false" x="1007.4999999999982" y="5413.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+</Diagram>
+

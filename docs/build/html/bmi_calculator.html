@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>bmi_calculator module &#8212; wx-bmi 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="ai_dlc module" href="ai_dlc.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-bmi_calculator">
+<span id="bmi-calculator-module"></span><h1>bmi_calculator module<a class="headerlink" href="#module-bmi_calculator" title="Link to this heading">¶</a></h1>
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.AgeDiscriminationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">AgeDiscriminationError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#AgeDiscriminationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.AgeDiscriminationError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiError" title="bmi_calculator.BmiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiError</span></code></a></p>
+<p>Exception raised for invalid age values.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">BmiAgeSex</span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiAgeSex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiAgeSex" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiCatSimple" title="bmi_calculator.BmiCatSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiCatSimple</span></code></a></p>
+<p>A class to categorize BMI values into predefined categories based on age and sex.</p>
+<dl class="simple">
+<dt>Inherits from:</dt><dd><p>BmiCatSimple: The base class for BMI categorization.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.sex_offset">
+<span class="sig-name descname"><span class="pre">sex_offset</span></span><a class="headerlink" href="#bmi_calculator.BmiAgeSex.sex_offset" title="Link to this definition">¶</a></dt>
+<dd><p>The offset value based on sex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.age">
+<span class="sig-name descname"><span class="pre">age</span></span><a class="headerlink" href="#bmi_calculator.BmiAgeSex.age" title="Link to this definition">¶</a></dt>
+<dd><p>The age of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.categories_male">
+<span class="sig-name descname"><span class="pre">categories_male</span></span><a class="headerlink" href="#bmi_calculator.BmiAgeSex.categories_male" title="Link to this definition">¶</a></dt>
+<dd><p>The BMI categories for males.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.categories_female">
+<span class="sig-name descname"><span class="pre">categories_female</span></span><a class="headerlink" href="#bmi_calculator.BmiAgeSex.categories_female" title="Link to this definition">¶</a></dt>
+<dd><p>The BMI categories for females.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.selected_categories">
+<span class="sig-name descname"><span class="pre">selected_categories</span></span><a class="headerlink" href="#bmi_calculator.BmiAgeSex.selected_categories" title="Link to this definition">¶</a></dt>
+<dd><p>The currently selected BMI categories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiAgeSex.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiAgeSex.__getitem__" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the BMI category and ideal BMI for a given BMI value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>float</em>) – The BMI value.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The category and ideal BMI corresponding to the BMI value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[str, float | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bmi_calculator.html#BmiAgeSex.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiAgeSex.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the BmiAgeSex class with predefined BMI categories for males and females.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.set_age">
+<span class="sig-name descname"><span class="pre">set_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bmi_calculator.html#BmiAgeSex.set_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiAgeSex.set_age" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the age of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>age</strong> (<em>int</em><em> | </em><em>None</em>) – The age of the individual.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiAgeSex.set_sex">
+<span class="sig-name descname"><span class="pre">set_sex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bmi_calculator.html#BmiAgeSex.set_sex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiAgeSex.set_sex" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the sex and updates the selected BMI categories and sex offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sex</strong> (<em>str</em><em> | </em><em>None</em>) – The sex of the individual (‘m’ for male, ‘f’ for female, or None).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">BmiCalc</span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to calculate BMI and categorize it based on age, sex, and body type.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.body_type">
+<span class="sig-name descname"><span class="pre">body_type</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.body_type" title="Link to this definition">¶</a></dt>
+<dd><p>The body type of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.__age">
+<span class="sig-name descname"><span class="pre">__age</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.__age" title="Link to this definition">¶</a></dt>
+<dd><p>The age of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.__weight">
+<span class="sig-name descname"><span class="pre">__weight</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.__weight" title="Link to this definition">¶</a></dt>
+<dd><p>The weight of the individual in kg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.__sex">
+<span class="sig-name descname"><span class="pre">__sex</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.__sex" title="Link to this definition">¶</a></dt>
+<dd><p>The sex of the individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.__size">
+<span class="sig-name descname"><span class="pre">__size</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.__size" title="Link to this definition">¶</a></dt>
+<dd><p>The height of the individual in meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.bmi_cat">
+<span class="sig-name descname"><span class="pre">bmi_cat</span></span><a class="headerlink" href="#bmi_calculator.BmiCalc.bmi_cat" title="Link to this definition">¶</a></dt>
+<dd><p>An instance of the BmiAgeSex class for BMI categorization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bmi_calculator.BmiAgeSex" title="bmi_calculator.BmiAgeSex">BmiAgeSex</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the BmiCalc class with default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_age">
+<span class="sig-name descname"><span class="pre">get_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_age" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current age.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_bmi">
+<span class="sig-name descname"><span class="pre">get_bmi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_bmi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_bmi" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates and returns the current BMI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current BMI.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#bmi_calculator.SizeError" title="bmi_calculator.SizeError"><strong>SizeError</strong></a> – If the size is not set.</p></li>
+<li><p><a class="reference internal" href="#bmi_calculator.WeightError" title="bmi_calculator.WeightError"><strong>WeightError</strong></a> – If the weight is not set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_category">
+<span class="sig-name descname"><span class="pre">get_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_category" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the current weight category as a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current weight category.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_ideal_weight">
+<span class="sig-name descname"><span class="pre">get_ideal_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_ideal_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_ideal_weight" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates and returns the ideal weight using the Creff formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ideal weight in kg.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#bmi_calculator.AgeDiscriminationError" title="bmi_calculator.AgeDiscriminationError"><strong>AgeDiscriminationError</strong></a> – If the age is not set or is invalid.</p></li>
+<li><p><a class="reference internal" href="#bmi_calculator.SizeError" title="bmi_calculator.SizeError"><strong>SizeError</strong></a> – If the size is not set or is invalid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_sex">
+<span class="sig-name descname"><span class="pre">get_sex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_sex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_sex" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current sex as ‘m’, ‘f’, or None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current sex.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_size">
+<span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_size" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current size in meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current size in meters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bmi_calculator.SizeError" title="bmi_calculator.SizeError"><strong>SizeError</strong></a> – If the size is not set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.get_weight">
+<span class="sig-name descname"><span class="pre">get_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.get_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.get_weight" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current weight in kg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current weight in kg.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bmi_calculator.WeightError" title="bmi_calculator.WeightError"><strong>WeightError</strong></a> – If the weight is not set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.set_age">
+<span class="sig-name descname"><span class="pre">set_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.set_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.set_age" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a new age or resets the age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>age</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – The new age or None to reset.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bmi_calculator.AgeDiscriminationError" title="bmi_calculator.AgeDiscriminationError"><strong>AgeDiscriminationError</strong></a> – If the age is not a valid positive number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.set_body_type">
+<span class="sig-name descname"><span class="pre">set_body_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'s'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'M'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'L'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.set_body_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.set_body_type" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a new body type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body_type</strong> (<em>Literal</em><em>[</em><em>'s'</em><em>, </em><em>'M'</em><em>, </em><em>'L'</em><em>]</em>) – The new body type as ‘s’, ‘M’, or ‘L’.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bmi_calculator.BodyTypeError" title="bmi_calculator.BodyTypeError"><strong>BodyTypeError</strong></a> – If the body type is not ‘s’, ‘M’, or ‘L’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.set_sex">
+<span class="sig-name descname"><span class="pre">set_sex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sex_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'m'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'f'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.set_sex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.set_sex" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a new sex or resets the sex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sex_string</strong> (<em>Optional</em><em>[</em><em>Literal</em><em>[</em><em>'m'</em><em>, </em><em>'f'</em><em>]</em><em>]</em>) – The new sex as ‘m’, ‘f’, or None.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bmi_calculator.SexError" title="bmi_calculator.SexError"><strong>SexError</strong></a> – If the sex is not ‘m’, ‘f’, or None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.set_size">
+<span class="sig-name descname"><span class="pre">set_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.set_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.set_size" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a new size in meters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>float</em>) – The new size.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bmi_calculator.SizeError" title="bmi_calculator.SizeError"><strong>SizeError</strong></a> – If the size is not a valid positive float number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCalc.set_weight">
+<span class="sig-name descname"><span class="pre">set_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCalc.set_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCalc.set_weight" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a new weight in kg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>float</em>) – The new weight.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bmi_calculator.WeightError" title="bmi_calculator.WeightError"><strong>WeightError</strong></a> – If the weight is not a valid positive float number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCatSimple">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">BmiCatSimple</span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCatSimple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCatSimple" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to categorize BMI values into predefined categories.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCatSimple.categories">
+<span class="sig-name descname"><span class="pre">categories</span></span><a class="headerlink" href="#bmi_calculator.BmiCatSimple.categories" title="Link to this definition">¶</a></dt>
+<dd><p>A tuple of BMI categories and their corresponding ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCatSimple.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCatSimple.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCatSimple.__getitem__" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the BMI category for a given BMI value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>float</em>) – The BMI value.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The category corresponding to the BMI value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmi_calculator.BmiCatSimple.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bmi_calculator.html#BmiCatSimple.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiCatSimple.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the BmiCatSimple class with predefined BMI categories.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.BmiError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">BmiError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#BmiError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BmiError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base class for exceptions in the BMI module.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.BodyTypeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">BodyTypeError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#BodyTypeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.BodyTypeError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiError" title="bmi_calculator.BmiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiError</span></code></a></p>
+<p>Exception raised for errors in the body type attribute.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.SexError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">SexError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#SexError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.SexError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiError" title="bmi_calculator.BmiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiError</span></code></a></p>
+<p>Exception raised for errors in the sex attribute.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.SizeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">SizeError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#SizeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.SizeError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiError" title="bmi_calculator.BmiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiError</span></code></a></p>
+<p>Exception raised for errors in the size attribute.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bmi_calculator.WeightError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmi_calculator.</span></span><span class="sig-name descname"><span class="pre">WeightError</span></span><a class="reference internal" href="_modules/bmi_calculator.html#WeightError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmi_calculator.WeightError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmi_calculator.BmiError" title="bmi_calculator.BmiError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BmiError</span></code></a></p>
+<p>Exception raised for errors in the weight attribute.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">wx-bmi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">wx-bmi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ai_dlc.html">ai_dlc module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">bmi_calculator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layout/index.html">layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layout/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">wx-bmi</a><ul>
+      <li>Previous: <a href="ai_dlc.html" title="previous chapter">ai_dlc module</a></li>
+      <li>Next: <a href="main.html" title="next chapter">main module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, DerVogel101 & KyattsuNoTsume.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/bmi_calculator.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
