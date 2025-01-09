@@ -227,11 +227,14 @@ class MainFrame(MainFrameModule.bmiMainFrame):
 
         self.output_frame.bmi_table.Enable(True)
 
+        self.SetCursor(wx.Cursor(wx.CURSOR_WAIT))  # Set wait cursor
         try:
             response = self.ai_dlc.get_response()
         except (AuthenticationError, APIConnectionError):
             wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
+            self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor on error
             return
+        self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor after response
         self.ai_response_dialog.set_html_content(str(response.content))
         self.ai_response_dialog.Show()
 
