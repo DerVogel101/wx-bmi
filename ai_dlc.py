@@ -40,7 +40,7 @@ class AiLib:
 
     def assemble_messages(self) -> None:
         self.__messages = [
-            {"role": "system", "content": f"Du bist ein Assistenz Programm welches einmalig einen Tipp zu der eingabe Generieren soll, achte auf unrealistische eingaben und sprich der Person gut zu, schreibe die antwort {self.personallity}. Antworte im HTML Format, benutze kein code markdown, nur raw, formatiere deinen HTML Sourcecode mit css."},
+            {"role": "system", "content": f"Du bist ein Assistenz Programm welches einmalig einen Tipp zu der eingabe Generieren soll, achte auf unrealistische eingaben und sprich der Person gut zu, schreibe die Antwort {self.personallity}. Antworte im HTML Format, benutze kein code markdown, nur raw, formatiere deinen HTML Sourcecode mit css."},
             {"role": "user", "content": f"----Körperwerte----\n"
                                         f"Alter: {self.age} Jahre\n"
                                         f"Geschlecht: {self.sex}\n"
