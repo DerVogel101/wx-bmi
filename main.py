@@ -1,9 +1,15 @@
+from openai import AuthenticationError, APIConnectionError
+
 import wx
+import wx.html2
 import wx.lib
 import layout.mainFrame as MainFrameModule
 import layout.inputFrame as InputFrameModule
 import layout.outputFrame as OutputFrameModule
+import layout.aipopup as AiPopUpModule
+import layout.airesponsepopup as AiResponsePopUpModule
 import bmi_calculator
+from ai_dlc import AiLib
 
 
 shared_bmi = bmi_calculator.BmiCalc()
@@ -20,6 +26,7 @@ class BmiUpdateEvent(wx.PyEvent):
 class InputHandler(InputFrameModule.inputPanel):
     def __init__(self, parent):
         super().__init__(parent)
+        self.ai_dlc: AiLib = parent.ai_dlc
         self.button_calc.Bind(wx.EVT_BUTTON, self.on_calc)
         self.txt_age.Bind(wx.EVT_CHAR, self.only_allow_number)
         self.txt_height.Bind(wx.EVT_CHAR, self.only_allow_number)
@@ -70,10 +77,13 @@ https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.I
             match self.radiobox_sex.GetStringSelection()[0]:
                 case 'M':
                     shared_bmi.set_sex("m")
+                    self.ai_dlc.sex = "Männlich"
                 case 'W':
                     shared_bmi.set_sex("f")
+                    self.ai_dlc.sex = "Weiblich"
                 case _:
                     shared_bmi.set_sex(None)
+                    self.ai_dlc.sex = "keine Angabe"
         except bmi_calculator.SexError as e:
             wx.MessageBox(str(e), "Error", wx.OK | wx.ICON_ERROR)
             return
@@ -83,10 +93,13 @@ https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.I
             match self.radiobox_body_type.GetStringSelection()[0]:
                 case 'Z':
                     shared_bmi.set_body_type("s")
+                    self.ai_dlc.btype = "Zierlich"
                 case 'N':
                     shared_bmi.set_body_type("M")
+                    self.ai_dlc.btype = "Normal"
                 case 'K':
                     shared_bmi.set_body_type("L")
+                    self.ai_dlc.btype = "Kräftig"
                 case _:
                     pass # This can never happen
         except Exception as e:
@@ -99,9 +112,16 @@ https://www.cdc.gov/bmi/child-teen-calculator/index.html", "Error", wx.OK | wx.I
             shared_bmi.set_size(values[1] / 100) # Convert cm to m
             shared_bmi.set_weight(values[2])
             score = shared_bmi.get_bmi()
+
+            self.ai_dlc.age = str(values[0])
+            self.ai_dlc.height = str(values[1])
+            self.ai_dlc.weigth = str(values[2])
+            self.ai_dlc.bmi_score = str(score)
         except Exception as e:
             wx.MessageBox(str(e), "Error", wx.OK | wx.ICON_ERROR)
             return
+
+        # self.ai_dlc.assemble_messages()
 
         wx.PostEvent(self.GetParent(), BmiUpdateEvent(score))
 
@@ -114,16 +134,58 @@ class OutputFrame(OutputFrameModule.outputPanel):
         self.Show()
 
 
+class AiPopUp(AiPopUpModule.AiPopUp):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.parent = parent
+        self.close_source = None
+
+    def shutdown_prog( self, event ):
+        if self.close_source == 'continue':
+            event.Skip()
+        else:
+            wx.Exit()
+
+    def continue_prog( self, event ):
+        self.parent.ai_dlc.set_api_key(self.ai_key_field.GetValue())
+        self.parent.ai_dlc.personallity = self.ai_personality.GetValue()
+        self.close_source = 'continue'
+        self.Close()
+        event.Skip()
+
+
+class AiResponsePopUp(AiResponsePopUpModule.AiResponsePopUp):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.parent = parent
+        self.m_htmlWin1 = wx.html2.WebView.New(self)  # Replace HtmlWindow with WebView
+        self.sizer = wx.BoxSizer(wx.VERTICAL)
+        self.sizer.Add(self.m_htmlWin1, 1, wx.EXPAND)
+        self.SetSizer(self.sizer)
+        self.Layout()
+
+    def set_html_content(self, html_content):
+        self.m_htmlWin1.SetPage(html_content, "")
+        self.m_htmlWin1.Refresh()
+
+
 class MainFrame(MainFrameModule.bmiMainFrame):
     def __init__(self, parent):
         super().__init__(parent)
+        self.ai_dlc = AiLib()
+
         self.input_frame = InputHandler(self)
         self.output_frame = OutputFrame(self)
+        self.ai_dialog = AiPopUp(self)
+        self.ai_response_dialog = AiResponsePopUp(self)
+
         self.main_content_area.Add(self.input_frame, 1, wx.EXPAND)
         self.main_content_area.Add(self.output_frame, 1, wx.EXPAND)
 
         self.Bind(EVT_BMI_UPDATE_BINDER, self.on_bmi_update)
         self.Show()
+
+        self.ai_dialog.ShowModal()
 
     def on_bmi_update(self, event):
         # Update score 
@@ -131,6 +193,7 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         # Update ideal weight
         try:
             self.output_frame.ideal_weight_box.SetValue(str(shared_bmi.get_ideal_weight()))
+            self.ai_dlc.craff_score = str(shared_bmi.get_ideal_weight())
         except bmi_calculator.AgeDiscriminationError:
             self.output_frame.ideal_weight_box.SetValue(str("Alter benötigt"))
 
@@ -159,7 +222,19 @@ class MainFrame(MainFrameModule.bmiMainFrame):
             self.output_frame.bmi_table.SetCellBackgroundColour(i, 0, col)
             self.output_frame.bmi_table.SetCellBackgroundColour(i, 1, col)
 
+        self.ai_dlc.bmi_cat = shared_bmi.bmi_cat[event.score][0]
+        self.ai_dlc.assemble_messages()
+
         self.output_frame.bmi_table.Enable(True)
+
+        try:
+            response = self.ai_dlc.get_response()
+        except (AuthenticationError, APIConnectionError):
+            wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
+            return
+        self.ai_response_dialog.set_html_content(str(response.content))
+        self.ai_response_dialog.Show()
+
 
         
 if __name__ == '__main__':
