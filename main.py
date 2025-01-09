@@ -140,8 +140,14 @@ class AiPopUp(AiPopUpModule.AiPopUp):
         self.parent = parent
         self.close_source = None
 
-    def shutdown_prog( self, event ):
-        if self.close_source == 'continue':
+    def deny_ai(self, event):
+        self.close_source = 'deny'
+        self.parent.enable_ai = False
+        self.Close()
+        event.Skip()
+
+    def shutdown_prog(self, event):
+        if self.close_source == 'continue' or self.close_source == 'deny':
             event.Skip()
         else:
             wx.Exit()
@@ -173,6 +179,7 @@ class MainFrame(MainFrameModule.bmiMainFrame):
     def __init__(self, parent):
         super().__init__(parent)
         self.ai_dlc = AiLib()
+        self.enable_ai = True
 
         self.input_frame = InputHandler(self)
         self.output_frame = OutputFrame(self)
@@ -227,16 +234,17 @@ class MainFrame(MainFrameModule.bmiMainFrame):
 
         self.output_frame.bmi_table.Enable(True)
 
-        self.SetCursor(wx.Cursor(wx.CURSOR_WAIT))  # Set wait cursor
-        try:
-            response = self.ai_dlc.get_response()
-        except (AuthenticationError, APIConnectionError):
-            wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
-            self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor on error
-            return
-        self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor after response
-        self.ai_response_dialog.set_html_content(str(response.content))
-        self.ai_response_dialog.Show()
+        if self.enable_ai:
+            self.SetCursor(wx.Cursor(wx.CURSOR_WAIT))  # Set wait cursor
+            try:
+                response = self.ai_dlc.get_response()
+            except (AuthenticationError, APIConnectionError):
+                wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
+                self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor on error
+                return
+            self.SetCursor(wx.Cursor(wx.CURSOR_DEFAULT))  # Reset cursor after response
+            self.ai_response_dialog.set_html_content(str(response.content))
+            self.ai_response_dialog.Show()
 
 
         

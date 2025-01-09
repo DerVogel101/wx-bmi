@@ -3,6 +3,8 @@ This project implements a simple BMI calculator according to [these specificatio
 
 As an additional gimmick, we implemented a feature that offers the user (given an OpenAI API key is provided) recommendations for improving their health and BMI score.
 
+We Provide a non AI version of the app that can be run without an API key, in a diffrent [branch](https://github.com/DerVogel101/wx-bmi/tree/no_ai).
+
 ### Installation
 1. Clone this repository and step into the project's root.
 2. Create a new virtual environment: `python -m venv .venv`.

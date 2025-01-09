@@ -34,7 +34,7 @@
     <object class="Frame" expanded="true">
       <property name="aui_managed">0</property>
       <property name="aui_manager_style">wxAUI_MGR_DEFAULT</property>
-      <property name="bg"></property>
+      <property name="bg">wxSYS_COLOUR_WINDOW</property>
       <property name="center">wxBOTH</property>
       <property name="context_help"></property>
       <property name="context_menu">1</property>
@@ -47,10 +47,10 @@
       <property name="hidden">0</property>
       <property name="id">wxID_ANY</property>
       <property name="maximum_size"></property>
-      <property name="minimum_size">770,460</property>
+      <property name="minimum_size">790,460</property>
       <property name="name">bmiMainFrame</property>
       <property name="pos"></property>
-      <property name="size">770,460</property>
+      <property name="size">1000,500</property>
       <property name="style">wxDEFAULT_FRAME_STYLE</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">BMI Rechner AI-DLC</property>
@@ -98,14 +98,14 @@
             <property name="gripper">0</property>
             <property name="hidden">0</property>
             <property name="id">wxID_ANY</property>
-            <property name="label">BMI AI Rechner</property>
+            <property name="label">BMI Rechner + AI</property>
             <property name="markup">0</property>
             <property name="max_size"></property>
             <property name="maximize_button">0</property>
             <property name="maximum_size"></property>
             <property name="min_size"></property>
             <property name="minimize_button">0</property>
-            <property name="minimum_size">280,55</property>
+            <property name="minimum_size">350,55</property>
             <property name="moveable">1</property>
             <property name="name">m_staticText8</property>
             <property name="pane_border">1</property>
@@ -2050,7 +2050,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="label">Abbrechen</property>
+                <property name="label">Ohne AI</property>
                 <property name="margins"></property>
                 <property name="markup">0</property>
                 <property name="max_size"></property>
@@ -2083,7 +2083,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <event name="OnButtonClick">shutdown_prog</event>
+                <event name="OnButtonClick">deny_ai</event>
               </object>
             </object>
             <object class="sizeritem" expanded="false">

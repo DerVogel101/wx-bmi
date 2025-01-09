@@ -23,10 +23,11 @@ class bmiMainFrame ( wx.Frame ):
         wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"BMI Rechner AI-DLC"), pos = wx.DefaultPosition, size = wx.Size( 1000,500 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.Size( 790,460 ), wx.DefaultSize )
+        self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 
         content_box = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_staticText8 = wx.StaticText( self, wx.ID_ANY, _(u"BMI-Rechner"), wx.DefaultPosition, wx.Size( -1,-1 ), wx.ALIGN_CENTER_HORIZONTAL )
+        self.m_staticText8 = wx.StaticText( self, wx.ID_ANY, _(u"BMI Rechner + AI"), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText8.Wrap( -1 )
 
         self.m_staticText8.SetFont( wx.Font( 30, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
