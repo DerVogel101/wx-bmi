@@ -1,5 +1,4 @@
 from openai import AuthenticationError
-from pprint import pprint
 
 import wx
 import wx.html2
@@ -233,7 +232,6 @@ class MainFrame(MainFrameModule.bmiMainFrame):
         except AuthenticationError:
             wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
             return
-        pprint(response)
         self.ai_response_dialog.set_html_content(str(response.content))
         self.ai_response_dialog.Show()
 

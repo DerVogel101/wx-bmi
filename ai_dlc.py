@@ -18,7 +18,7 @@ from pprint import pprint
 
 class AiLib:
     def __init__(self):
-        self.__client = OpenAI()
+        self.__client = OpenAI(api_key="")
         self.__model = "gpt-4o-mini"
 
         self.weigth = "-Leer-" #
