@@ -19,8 +19,20 @@ _ = gettext.gettext
 ###########################################################################
 
 class AiResponsePopUp ( wx.Dialog ):
+    """
+    A dialog class for displaying AI response evaluations.
+
+    Inherits from:
+        wx.Dialog: The base class for all dialogs in wxPython.
+    """
 
     def __init__( self, parent ):
+        """
+        Initializes the AiResponsePopUp dialog with a title, size, and an HTML window.
+
+        Args:
+            parent (wx.Window): The parent window for this dialog.
+        """
         wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Ki Auswertung"), pos = wx.DefaultPosition, size = wx.Size( 650,460 ), style = wx.DEFAULT_DIALOG_STYLE )
 
         self.SetSizeHints( wx.Size( 650,460 ), wx.DefaultSize )
@@ -30,13 +42,15 @@ class AiResponsePopUp ( wx.Dialog ):
         self.m_htmlWin1 = wx.html.HtmlWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.html.HW_SCROLLBAR_AUTO )
         bSizer11.Add( self.m_htmlWin1, 0, wx.ALL, 5 )
 
-
         self.SetSizer( bSizer11 )
         self.Layout()
 
         self.Centre( wx.BOTH )
 
     def __del__( self ):
+        """
+        Destructor for the AiResponsePopUp class.
+        """
         pass
 
 

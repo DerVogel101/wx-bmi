@@ -18,8 +18,20 @@ _ = gettext.gettext
 ###########################################################################
 
 class bmiMainFrame ( wx.Frame ):
+    """
+    A frame class for the main window of the BMI calculator application.
+
+    Inherits from:
+        wx.Frame: The base class for all frames in wxPython.
+    """
 
     def __init__( self, parent ):
+        """
+        Initializes the bmiMainFrame with a title, size, and various UI components.
+
+        Args:
+            parent (wx.Window): The parent window for this frame.
+        """
         wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"BMI Rechner AI-DLC"), pos = wx.DefaultPosition, size = wx.Size( 1000,500 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.Size( 790,460 ), wx.DefaultSize )
@@ -41,13 +53,15 @@ class bmiMainFrame ( wx.Frame ):
 
         content_box.Add( self.main_content_area, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-
         self.SetSizer( content_box )
         self.Layout()
 
         self.Centre( wx.BOTH )
 
     def __del__( self ):
+        """
+        Destructor for the bmiMainFrame class.
+        """
         pass
 
 

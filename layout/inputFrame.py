@@ -18,8 +18,25 @@ _ = gettext.gettext
 ###########################################################################
 
 class inputPanel ( wx.Panel ):
+    """
+    A panel class for inputting body measurements and other related data.
+
+    Inherits from:
+        wx.Panel: The base class for all panels in wxPython.
+    """
 
     def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
+        """
+        Initializes the inputPanel with various input fields and labels.
+
+        Args:
+            parent (wx.Window): The parent window for this panel.
+            id (int, optional): The window identifier. Defaults to wx.ID_ANY.
+            pos (wx.Point, optional): The position of the panel. Defaults to wx.DefaultPosition.
+            size (wx.Size, optional): The size of the panel. Defaults to wx.Size(-1, -1).
+            style (int, optional): The window style. Defaults to wx.TAB_TRAVERSAL.
+            name (str, optional): The name of the panel. Defaults to wx.EmptyString.
+        """
         wx.Panel.__init__ ( self, parent, id = id, pos = pos, size = size, style = style, name = name )
 
         bSizer2 = wx.BoxSizer( wx.VERTICAL )
@@ -83,18 +100,19 @@ class inputPanel ( wx.Panel ):
 
         fgSizer5.Add( self.txt_mass, 0, wx.ALIGN_CENTER_VERTICAL|wx.EXPAND|wx.TOP|wx.RIGHT, 5 )
 
-
         bSizer2.Add( fgSizer5, 1, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         self.button_calc = wx.Button( self, wx.ID_ANY, _(u"Berechnen"), wx.DefaultPosition, wx.DefaultSize, 0 )
         bSizer2.Add( self.button_calc, 0, wx.ALL|wx.EXPAND, 5 )
-
 
         self.SetSizer( bSizer2 )
         self.Layout()
         bSizer2.Fit( self )
 
     def __del__( self ):
+        """
+        Destructor for the inputPanel class.
+        """
         pass
 
 

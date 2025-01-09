@@ -19,8 +19,25 @@ _ = gettext.gettext
 ###########################################################################
 
 class outputPanel ( wx.Panel ):
+    """
+    A panel class for displaying BMI results and related information.
+
+    Inherits from:
+        wx.Panel: The base class for all panels in wxPython.
+    """
 
     def __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ):
+        """
+        Initializes the outputPanel with various static texts, a grid for BMI data, and text controls.
+
+        Args:
+            parent (wx.Window): The parent window for this panel.
+            id (int, optional): The window identifier. Defaults to wx.ID_ANY.
+            pos (wx.Point, optional): The position of the panel. Defaults to wx.DefaultPosition.
+            size (wx.Size, optional): The size of the panel. Defaults to wx.Size(-1, -1).
+            style (int, optional): The window style. Defaults to wx.TAB_TRAVERSAL.
+            name (str, optional): The name of the panel. Defaults to wx.EmptyString.
+        """
         wx.Panel.__init__ ( self, parent, id = id, pos = pos, size = size, style = style, name = name )
 
         bSizer8 = wx.BoxSizer( wx.VERTICAL )
@@ -126,6 +143,9 @@ class outputPanel ( wx.Panel ):
         bSizer8.Fit( self )
 
     def __del__( self ):
+        """
+        Destructor for the outputPanel class.
+        """
         pass
 
 

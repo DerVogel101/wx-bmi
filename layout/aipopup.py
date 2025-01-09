@@ -18,8 +18,20 @@ _ = gettext.gettext
 ###########################################################################
 
 class AiPopUp ( wx.Dialog ):
+    """
+    A dialog class for configuring AI DLC settings.
+
+    Inherits from:
+        wx.Dialog: The base class for all dialogs in wxPython.
+    """
 
     def __init__( self, parent ):
+        """
+        Initializes the AiPopUp dialog with a title, size, and various UI components.
+
+        Args:
+            parent (wx.Window): The parent window for this dialog.
+        """
         wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"AI DLC Einstellungen"), pos = wx.DefaultPosition, size = wx.Size( 520,220 ), style = wx.DEFAULT_DIALOG_STYLE|wx.STAY_ON_TOP )
 
         self.SetSizeHints( wx.Size( 520,220 ), wx.DefaultSize )
@@ -89,15 +101,36 @@ class AiPopUp ( wx.Dialog ):
         self.continue_butt.Bind( wx.EVT_BUTTON, self.continue_prog )
 
     def __del__( self ):
+        """
+        Destructor for the AiPopUp class.
+        """
         pass
 
 
     # Virtual event handlers, override them in your derived class
     def shutdown_prog( self, event ):
+        """
+        Event handler for closing the program.
+
+        Args:
+            event (wx.Event): The event object.
+        """
         event.Skip()
 
     def deny_ai( self, event ):
+        """
+        Event handler for denying AI usage.
+
+        Args:
+            event (wx.Event): The event object.
+        """
         event.Skip()
 
     def continue_prog( self, event ):
+        """
+        Event handler for continuing with the program.
+
+        Args:
+            event (wx.Event): The event object.
+        """
         event.Skip()
