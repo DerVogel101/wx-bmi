@@ -1,4 +1,4 @@
-from openai import AuthenticationError
+from openai import AuthenticationError, APIConnectionError
 
 import wx
 import wx.html2
@@ -229,7 +229,7 @@ class MainFrame(MainFrameModule.bmiMainFrame):
 
         try:
             response = self.ai_dlc.get_response()
-        except AuthenticationError:
+        except (AuthenticationError, APIConnectionError):
             wx.MessageBox("API Key ungültig", "Error", wx.OK | wx.ICON_ERROR)
             return
         self.ai_response_dialog.set_html_content(str(response.content))
