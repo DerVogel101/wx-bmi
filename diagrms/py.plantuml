@@ -4,7 +4,68 @@
 top to bottom direction
 skinparam linetype ortho
 
-class node7 as "layout.aipopup.AiPopUp" {
+class node25 as "ai_dlc.AiLib" {
+   weigth: 
+   bmi_score: 
+   bmi_cat: 
+   craff_score: 
+   sex: 
+   btype: 
+   __messages: 
+   __client: 
+   __model: 
+   personallity: 
+   age: 
+   height: 
+   __init__(self): 
+   set_api_key(self, api_key: str): 
+   assemble_messages(self): 
+   get_response(self): 
+}
+class node34 as "bmi_calculator.AgeDiscriminationError"
+class node28 as "bmi_calculator.BmiAgeSex" {
+   categories_female: 
+   selected_categories: 
+   categories_male: 
+   sex_offset: 
+   age: 
+   __init__(self): 
+   set_sex(self, sex: str | None): 
+   set_age(self, age: int | None): 
+   __getitem__(self, item): 
+}
+class node26 as "bmi_calculator.BmiCalc" {
+   __sex: 
+   bmi_cat: 
+   body_type: 
+   __age: 
+   __weight: 
+   __size: 
+   __init__(self): 
+   get_bmi(self): 
+   get_category(self): 
+   get_age(self): 
+   set_age(self, age: Optional[int]): 
+   get_sex(self): 
+   set_sex(self, sex_string: Optional[Literal['m', 'f']]): 
+   get_size(self): 
+   set_size(self, size: float): 
+   get_weight(self): 
+   set_weight(self, weight: float): 
+   set_body_type(self, body_type: Literal['s', 'M' ,'L']): 
+   get_ideal_weight(self): 
+}
+class node29 as "bmi_calculator.BmiCatSimple" {
+   categories: 
+   __init__(self): 
+   __getitem__(self, item: float): 
+}
+class node27 as "bmi_calculator.BmiError"
+class node31 as "bmi_calculator.BodyTypeError"
+class node32 as "bmi_calculator.SexError"
+class node33 as "bmi_calculator.SizeError"
+class node30 as "bmi_calculator.WeightError"
+class node5 as "layout.aipopup.AiPopUp" {
    cancel_butt: 
    m_staticText15: 
    m_staticText14: 
@@ -19,7 +80,7 @@ class node7 as "layout.aipopup.AiPopUp" {
    deny_ai( self, event ): 
    continue_prog( self, event ): 
 }
-class node1 as "layout.airesponsepopup.AiResponsePopUp" {
+class node2 as "layout.airesponsepopup.AiResponsePopUp" {
    m_htmlWin1: 
    __init__( self, parent ): 
    __del__( self ): 
@@ -40,13 +101,13 @@ class node11 as "layout.inputFrame.inputPanel" {
    __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ): 
    __del__( self ): 
 }
-class node10 as "layout.mainFrame.bmiMainFrame" {
+class node21 as "layout.mainFrame.bmiMainFrame" {
    m_staticText8: 
    main_content_area: 
    __init__( self, parent ): 
    __del__( self ): 
 }
-class node17 as "layout.outputFrame.outputPanel" {
+class node4 as "layout.outputFrame.outputPanel" {
    bmi_table: 
    m_staticText18: 
    m_staticText9: 
@@ -58,7 +119,7 @@ class node17 as "layout.outputFrame.outputPanel" {
    __init__( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.TAB_TRAVERSAL, name = wx.EmptyString ): 
    __del__( self ): 
 }
-class node8 as "main.AiPopUp" {
+class node24 as "main.AiPopUp" {
    parent: 
    close_source: 
    __init__(self, parent): 
@@ -66,25 +127,25 @@ class node8 as "main.AiPopUp" {
    shutdown_prog(self, event): 
    continue_prog(self, event): 
 }
-class node12 as "main.AiResponsePopUp" {
+class node15 as "main.AiResponsePopUp" {
    m_htmlWin1: 
    parent: 
    sizer: 
    __init__(self, parent): 
    set_html_content(self, html_content): 
 }
-class node15 as "main.BmiUpdateEvent" {
+class node22 as "main.BmiUpdateEvent" {
    score: 
    __init__(self, score): 
 }
-class node6 as "main.InputHandler" {
+class node0 as "main.InputHandler" {
    ai_dlc: 
    __init__(self, parent): 
    only_allow_number(self, event): 
    only_allow_float(self, event): 
    on_calc(self, _): 
 }
-class node22 as "main.MainFrame" {
+class node19 as "main.MainFrame" {
    output_frame: 
    ai_response_dialog: 
    ai_dialog: 
@@ -94,7 +155,7 @@ class node22 as "main.MainFrame" {
    __init__(self, parent): 
    on_bmi_update(self, event): 
 }
-class node0 as "main.OutputFrame" {
+class node3 as "main.OutputFrame" {
    __init__(self, parent): 
 }
 class object {
@@ -123,10 +184,10 @@ class object {
    __init_subclass__(cls): 
    __subclasshook__(cls, __subclass: type): 
 }
-class node18 as "typing.Hashable" {
+class node20 as "typing.Hashable" {
    __hash__(self): 
 }
-class node9 as "wx.core.Dialog" {
+class node14 as "wx.core.Dialog" {
    AffirmativeId: 
    ContentWindow: 
    EscapeId: 
@@ -178,7 +239,7 @@ class node9 as "wx.core.Dialog" {
    __enter__(self): 
    __exit__(self, exc_type, exc_val, exc_tb): 
 }
-class node24 as "wx.core.Event" {
+class node8 as "wx.core.Event" {
    EventObject: 
    EventType: 
    Id: 
@@ -202,7 +263,7 @@ class node24 as "wx.core.Event" {
    Skip(self, skip=True): 
    StopPropagation(self): 
 }
-class node2 as "wx.core.EvtHandler" {
+class node16 as "wx.core.EvtHandler" {
    EvtHandlerEnabled: 
    NextHandler: 
    PreviousHandler: 
@@ -231,7 +292,7 @@ class node2 as "wx.core.EvtHandler" {
    TryBefore(self, event): 
    TryAfter(self, event): 
 }
-class node14 as "wx.core.Frame" {
+class node23 as "wx.core.Frame" {
    MenuBar: 
    StatusBar: 
    StatusBarPane: 
@@ -260,10 +321,10 @@ class node14 as "wx.core.Frame" {
    PopStatusText(self, number=0): 
    GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
 }
-class node20 as "wx.core.NonOwnedWindow" {
+class node9 as "wx.core.NonOwnedWindow" {
    SetShape(self, *args, **kw): 
 }
-class node16 as "wx.core.Object" {
+class node13 as "wx.core.Object" {
    ClassInfo: 
    ClassName: 
    RefData: 
@@ -278,7 +339,7 @@ class node16 as "wx.core.Object" {
    GetClassName(self): 
    Destroy(self): 
 }
-class node23 as "wx.core.Panel" {
+class node1 as "wx.core.Panel" {
    __init__(self, *args, **kw): 
    AcceptsFocus(self): 
    Create(self, parent, id=ID_ANY, pos=DefaultPosition, size=DefaultSize, style=TAB_TRAVERSAL, name=PanelNameStr): 
@@ -288,7 +349,7 @@ class node23 as "wx.core.Panel" {
    SetFocusIgnoringChildren(self): 
    GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
 }
-class node19 as "wx.core.PyEvent" {
+class node17 as "wx.core.PyEvent" {
    __init__(self, id=0, eventType=wxEVT_NULL): 
    __getattr__(self, name): 
    __delattr__(self, name): 
@@ -297,7 +358,7 @@ class node19 as "wx.core.PyEvent" {
    Clone(self): 
    _getAttrDict(self): 
 }
-class node5 as "wx.core.TopLevelWindow" {
+class node18 as "wx.core.TopLevelWindow" {
    DefaultItem: 
    Icon: 
    Title: 
@@ -355,8 +416,8 @@ class node5 as "wx.core.TopLevelWindow" {
    MacGetTopLevelWindowRef(self): 
    GetClassDefaultAttributes(variant=WINDOW_VARIANT_NORMAL): 
 }
-class node13 as "wx.core.Trackable"
-class node21 as "wx.core.Window" {
+class node12 as "wx.core.Trackable"
+class node7 as "wx.core.Window" {
    Rect: 
    ClientRect: 
    SetDimensions: 
@@ -704,34 +765,43 @@ class node21 as "wx.core.Window" {
    SendDestroyEvent(self): 
    ProcessEvent(self, event): 
 }
-class node4 as "wx.core.WindowBase" {
+class node10 as "wx.core.WindowBase" {
    AddChild(self, child): 
    RemoveChild(self, child): 
 }
 
-node7   ^-[#595959,plain]-  node9  
-node1   ^-[#595959,plain]-  node9  
-node11  ^-[#595959,plain]-  node23 
-node10  ^-[#595959,plain]-  node14 
-node17  ^-[#595959,plain]-  node23 
-node8   ^-[#595959,plain]-  node7  
-node12  ^-[#595959,plain]-  node1  
-node15  ^-[#595959,plain]-  node19 
-node6   ^-[#595959,plain]-  node11 
-node22  ^-[#595959,plain]-  node10 
-node0   ^-[#595959,plain]-  node17 
-object  ^-[#595959,dashed]-  node18 
-node9   ^-[#595959,plain]-  node5  
-node24  ^-[#595959,plain]-  node16 
-node2   ^-[#595959,plain]-  node16 
-node2   ^-[#595959,plain]-  node13 
-node14  ^-[#595959,plain]-  node5  
-node20  ^-[#595959,plain]-  node21 
-node16  ^-[#595959,plain]-  object 
-node23  ^-[#595959,plain]-  node21 
-node19  ^-[#595959,plain]-  node24 
-node5   ^-[#595959,plain]-  node20 
+node25  ^-[#595959,plain]-  object 
+node34  ^-[#595959,plain]-  node27 
+node28  ^-[#595959,plain]-  node29 
+node26  ^-[#595959,plain]-  object 
+node29  ^-[#595959,plain]-  object 
+node31  ^-[#595959,plain]-  node27 
+node32  ^-[#595959,plain]-  node27 
+node33  ^-[#595959,plain]-  node27 
+node30  ^-[#595959,plain]-  node27 
+node5   ^-[#595959,plain]-  node14 
+node2   ^-[#595959,plain]-  node14 
+node11  ^-[#595959,plain]-  node1  
+node21  ^-[#595959,plain]-  node23 
+node4   ^-[#595959,plain]-  node1  
+node24  ^-[#595959,plain]-  node5  
+node15  ^-[#595959,plain]-  node2  
+node22  ^-[#595959,plain]-  node17 
+node0   ^-[#595959,plain]-  node11 
+node19  ^-[#595959,plain]-  node21 
+node3   ^-[#595959,plain]-  node4  
+object  ^-[#595959,dashed]-  node20 
+node14  ^-[#595959,plain]-  node18 
+node8   ^-[#595959,plain]-  node13 
+node16  ^-[#595959,plain]-  node13 
+node16  ^-[#595959,plain]-  node12 
+node23  ^-[#595959,plain]-  node18 
+node9   ^-[#595959,plain]-  node7  
 node13  ^-[#595959,plain]-  object 
-node21  ^-[#595959,plain]-  node4  
-node4   ^-[#595959,plain]-  node2  
+node1   ^-[#595959,plain]-  node7  
+node17  ^-[#595959,plain]-  node8  
+node18  ^-[#595959,plain]-  node9  
+node12  ^-[#595959,plain]-  object 
+node7   ^-[#595959,plain]-  node10 
+node10  ^-[#595959,plain]-  node16 
 @enduml

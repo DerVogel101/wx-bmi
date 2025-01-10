@@ -3,136 +3,234 @@
   <ID>Python</ID>
   <OriginalElement>#H:/programming/wx-bmi/main.py</OriginalElement>
   <nodes>
-    <node x="645.0" y="5001.5">wx.core.TopLevelWindow</node>
-    <node x="-78.5" y="10655.5">main.InputHandler</node>
-    <node x="1972.0" y="5603.5">main.AiPopUp</node>
-    <node x="316.0" y="1191.5">wx.core.Event</node>
-    <node x="396.0" y="-14.5">typing.Hashable</node>
-    <node x="807.0" y="10005.5">main.OutputFrame</node>
-    <node x="382.0" y="779.5">wx.core.Object</node>
-    <node x="309.0" y="107.5">object</node>
-    <node x="1205.5" y="6379.5">layout.airesponsepopup.AiResponsePopUp</node>
-    <node x="-191.0" y="611.5">wx.core.EvtHandler</node>
-    <node x="316.0" y="1833.5">wx.core.PyEvent</node>
-    <node x="-65.0" y="1373.5">wx.core.WindowBase</node>
-    <node x="329.5" y="5665.5">wx.core.NonOwnedWindow</node>
-    <node x="1165.0" y="5075.5">wx.core.Dialog</node>
-    <node x="-195.0" y="9921.5">wx.core.Panel</node>
-    <node x="331.5" y="9895.5">layout.outputFrame.outputPanel</node>
-    <node x="774.0" y="7399.5">main.MainFrame</node>
-    <node x="-195.0" y="1521.5">wx.core.Window</node>
-    <node x="642.5" y="6451.5">wx.core.Frame</node>
-    <node x="1683.5" y="5519.5">layout.aipopup.AiPopUp</node>
-    <node x="372.5" y="2111.5">main.BmiUpdateEvent</node>
-    <node x="-168.5" y="10207.5">layout.inputFrame.inputPanel</node>
-    <node x="726.5" y="7207.5">layout.mainFrame.bmiMainFrame</node>
-    <node x="1264.5" y="6555.5">main.AiResponsePopUp</node>
-    <node x="-52.5" y="403.0">wx.core.Trackable</node>
+    <node x="1146.7730541988572" y="6705.971065783793">main.InputHandler</node>
+    <node x="1076.3291405088435" y="6371.261605323509">wx.core.Panel</node>
+    <node x="1499.5727629279058" y="6809.475564388651">layout.airesponsepopup.AiResponsePopUp</node>
+    <node x="1750.7484612744288" y="7174.9067087168405">bmi_calculator.WeightError</node>
+    <node x="330.87450110521047" y="991.9737908240049">bmi_calculator.BmiCalc</node>
+    <node x="1651.2287184030774" y="6460.560748954555">main.OutputFrame</node>
+    <node x="1434.0021626824696" y="7348.049675523685">bmi_calculator.BodyTypeError</node>
+    <node x="1505.1493839925993" y="5547.997984430132">layout.outputFrame.outputPanel</node>
+    <node x="823.799674343365" y="475.1617970077009">ai_dlc.AiLib</node>
+    <node x="781.19423494721" y="6994.070732056191">layout.aipopup.AiPopUp</node>
+    <node x="207.03838589954134" y="125.79654278801036">object</node>
+    <node x="2505.9473000860908" y="-14.834333403937308">wx.core.Window</node>
+    <node x="1184.2240959073133" y="1354.5636230560026">wx.core.Event</node>
+    <node x="1050.2453544179066" y="7420.521341668327">bmi_calculator.SexError</node>
+    <node x="768.2949144775387" y="5831.535510322141">wx.core.NonOwnedWindow</node>
+    <node x="1236.6414873921801" y="743.9964137576103">wx.core.WindowBase</node>
+    <node x="515.6706740801678" y="6494.951592090629">layout.inputFrame.inputPanel</node>
+    <node x="1946.4117785622857" y="1396.8638538118892">wx.core.Trackable</node>
+    <node x="1813.4631465846599" y="1622.5718296123587">wx.core.Object</node>
+    <node x="1619.5584888016115" y="2315.867628046394">wx.core.Dialog</node>
+    <node x="672.812816819077" y="7443.421810420918">bmi_calculator.SizeError</node>
+    <node x="95.71041719518036" y="7281.448136283864">bmi_calculator.BmiError</node>
+    <node x="1179.057658597632" y="7037.023614149551">main.AiResponsePopUp</node>
+    <node x="903.8550486542653" y="1014.9018640184081">bmi_calculator.BmiAgeSex</node>
+    <node x="1979.6769776732333" y="376.71784838489066">wx.core.EvtHandler</node>
+    <node x="1575.499339231713" y="1088.737025287227">wx.core.PyEvent</node>
+    <node x="181.12298422120085" y="4697.061339666148">wx.core.TopLevelWindow</node>
+    <node x="-194.72673727734735" y="7151.849017030609">main.MainFrame</node>
+    <node x="1113.028103167006" y="364.26361200210386">typing.Hashable</node>
+    <node x="73.34745681601214" y="6951.77364204443">layout.mainFrame.bmiMainFrame</node>
+    <node x="1487.6109743673778" y="559.5207631054077">bmi_calculator.BmiCatSimple</node>
+    <node x="1107.5909334799207" y="2068.9373530020457">main.BmiUpdateEvent</node>
+    <node x="-22.356218159027094" y="6146.570478754182">wx.core.Frame</node>
+    <node x="183.40910865230137" y="7504.994702788845">bmi_calculator.AgeDiscriminationError</node>
+    <node x="413.5502067470838" y="7171.129507837613">main.AiPopUp</node>
   </nodes>
   <notes />
   <edges>
     <edge source="wx.core.Event" target="wx.core.Object" relationship="REALIZATION">
-      <point x="0.0" y="-286.5" />
-      <point x="0.0" y="178.5" />
+      <point x="164.99990409268662" y="3.76943997480339E-4" />
+      <point x="1795.963" y="1640.064" />
+      <point x="1795.963" y="1531.0" />
+      <point x="1912.463" y="1531.0" />
+      <point x="-1.4658465988759417E-4" y="-177.49982961235878" />
     </edge>
     <edge source="wx.core.TopLevelWindow" target="wx.core.NonOwnedWindow" relationship="REALIZATION">
-      <point x="-236.0" y="0.0" />
-      <point x="131.5" y="0.0" />
+      <point x="236.0" y="472.4741706559935" />
+      <point x="-131.5" y="0.0" />
     </edge>
     <edge source="object" target="typing.Hashable" relationship="REALIZATION">
-      <point x="0.0" y="-310.5" />
-      <point x="0.0" y="32.5" />
+      <point x="172.00000000000003" y="-38.5329307859065" />
+      <point x="-85.0" y="0.0" />
     </edge>
     <edge source="layout.outputFrame.outputPanel" target="wx.core.Panel" relationship="REALIZATION">
-      <point x="-209.5" y="0.0" />
-      <point x="236.0" y="0.0" />
+      <point x="-3.839925993815996E-4" y="141.50001556986717" />
+      <point x="1714.649" y="6102.0" />
+      <point x="997.0" y="6102.0" />
+      <point x="997.0" y="6502.762000000001" />
+      <point x="-236.00014050884351" y="15.000394676490941" />
     </edge>
     <edge source="wx.core.Panel" target="wx.core.Window" relationship="REALIZATION">
-      <point x="0.0" y="-116.5" />
-      <point x="0.0" y="4176.5" />
+      <point x="-236.00014050884351" y="3.946764909414924E-4" />
+      <point x="1054.0" y="6487.762000000001" />
+      <point x="1054.0" y="2051.437" />
+      <point x="-236.00030008609065" y="-2108.228666596063" />
     </edge>
     <edge source="wx.core.Frame" target="wx.core.TopLevelWindow" relationship="REALIZATION">
-      <point x="0.0" y="-346.5" />
-      <point x="0.0" y="696.5" />
+      <point x="2.181590270922129E-4" y="-345.5004787541816" />
+      <point x="216.144" y="6117.0" />
+      <point x="417.123" y="6117.0" />
+      <point x="1.5778799138388422E-5" y="694.4996603338523" />
+    </edge>
+    <edge source="bmi_calculator.BmiAgeSex" target="bmi_calculator.BmiCatSimple" relationship="REALIZATION">
+      <point x="126.5" y="0.0" />
+      <point x="1506.7240959073133" y="1144.401864018408" />
+      <point x="-117.88687846006451" y="57.5" />
     </edge>
     <edge source="wx.core.Dialog" target="wx.core.TopLevelWindow" relationship="REALIZATION">
-      <point x="-236.0" y="0.0" />
-      <point x="236.0" y="0.0" />
+      <point x="86.09051119838841" y="621.5003719536055" />
+      <point x="1941.649" y="6117.0" />
+      <point x="417.123" y="6117.0" />
+      <point x="1.5778799138388422E-5" y="694.4996603338523" />
+    </edge>
+    <edge source="bmi_calculator.BmiCatSimple" target="object" relationship="REALIZATION">
+      <point x="137.00002563262228" y="2.36894592489989E-4" />
+      <point x="1926.0" y="617.0210000000002" />
+      <point x="1926.0" y="948.0" />
+      <point x="379.038" y="948.0" />
+      <point x="-3.858995413423827E-4" y="309.50045721198967" />
     </edge>
     <edge source="wx.core.EvtHandler" target="wx.core.Object" relationship="REALIZATION">
-      <point x="232.0" y="0.0" />
-      <point x="-99.0" y="0.0" />
+      <point x="2.232676661151345E-5" y="345.5001516151092" />
+      <point x="2211.6769999999997" y="1531.0" />
+      <point x="1912.463" y="1531.0" />
+      <point x="-1.4658465988759417E-4" y="-177.49982961235878" />
     </edge>
     <edge source="main.OutputFrame" target="layout.outputFrame.outputPanel" relationship="REALIZATION">
-      <point x="-94.0" y="0.0" />
-      <point x="209.5" y="0.0" />
+      <point x="0.0" y="-32.5" />
+      <point x="30.579334410478168" y="141.5" />
+    </edge>
+    <edge source="bmi_calculator.SizeError" target="bmi_calculator.BmiError" relationship="REALIZATION">
+      <point x="1.831809229315695E-4" y="-14.999810420917129" />
+      <point x="789.313" y="7400.0" />
+      <point x="210.21" y="7400.0" />
+      <point x="-4.171951803542129E-4" y="14.999863716135678" />
     </edge>
     <edge source="wx.core.NonOwnedWindow" target="wx.core.Window" relationship="REALIZATION">
-      <point x="-131.5" y="0.0" />
-      <point x="236.0" y="0.0" />
+      <point x="131.5000855224613" y="4.896778586953587E-4" />
+      <point x="1054.0" y="5864.036" />
+      <point x="1054.0" y="2051.437" />
+      <point x="-236.00030008609065" y="-2108.228666596063" />
+    </edge>
+    <edge source="bmi_calculator.AgeDiscriminationError" target="bmi_calculator.BmiError" relationship="REALIZATION">
+      <point x="-1.086523013640317E-4" y="-14.999702788844843" />
+      <point x="357.409" y="7400.0" />
+      <point x="210.21" y="7400.0" />
+      <point x="-4.171951803542129E-4" y="14.999863716135678" />
     </edge>
     <edge source="layout.aipopup.AiPopUp" target="wx.core.Dialog" relationship="REALIZATION">
-      <point x="-117.5" y="0.0" />
-      <point x="236.0" y="0.0" />
+      <point x="-2.3494721006045438E-4" y="-177.49973205619153" />
+      <point x="898.694" y="6960.0" />
+      <point x="1956.649" y="6960.0" />
+      <point x="101.09051119838841" y="621.5003719536055" />
     </edge>
     <edge source="main.AiPopUp" target="layout.aipopup.AiPopUp" relationship="REALIZATION">
-      <point x="-109.0" y="0.0" />
-      <point x="117.5" y="0.0" />
+      <point x="109.0" y="0.0" />
+      <point x="-117.5" y="93.05877578142145" />
+    </edge>
+    <edge source="bmi_calculator.BmiCalc" target="object" relationship="REALIZATION">
+      <point x="4.988947895299134E-4" y="-249.49979082400478" />
+      <point x="513.375" y="948.0" />
+      <point x="379.038" y="948.0" />
+      <point x="-3.858995413423827E-4" y="309.50045721198967" />
     </edge>
     <edge source="main.MainFrame" target="layout.mainFrame.bmiMainFrame" relationship="REALIZATION">
-      <point x="0.0" y="-118.5" />
-      <point x="0.0" y="70.5" />
+      <point x="107.0" y="-5.400880746743951" />
+      <point x="227.84745681601214" y="7263.948136283864" />
+      <point x="0.0" y="69.5" />
     </edge>
     <edge source="wx.core.EvtHandler" target="wx.core.Trackable" relationship="REALIZATION">
-      <point x="0.0" y="-346.5" />
-      <point x="0.0" y="15.0" />
+      <point x="-171.7651991109476" y="345.5" />
+      <point x="0.0" y="-15.0" />
     </edge>
     <edge source="layout.airesponsepopup.AiResponsePopUp" target="wx.core.Dialog" relationship="REALIZATION">
-      <point x="0.0" y="-58.5" />
-      <point x="0.0" y="622.5" />
+      <point x="2.370720942508342E-4" y="57.50043561134862" />
+      <point x="1695.073" y="6960.0" />
+      <point x="1956.649" y="6960.0" />
+      <point x="101.09051119838841" y="621.5003719536055" />
     </edge>
     <edge source="wx.core.Trackable" target="object" relationship="REALIZATION">
-      <point x="93.5" y="0.0" />
-      <point x="-172.0" y="0.0" />
+      <point x="-93.49977856228566" y="1.4618811087530048E-4" />
+      <point x="1926.0" y="1411.864" />
+      <point x="1926.0" y="948.0" />
+      <point x="379.038" y="948.0" />
+      <point x="-3.858995413423827E-4" y="309.50045721198967" />
     </edge>
     <edge source="wx.core.WindowBase" target="wx.core.EvtHandler" relationship="REALIZATION">
-      <point x="0.0" y="-44.5" />
-      <point x="0.0" y="346.5" />
-    </edge>
-    <edge source="wx.core.PyEvent" target="wx.core.Event" relationship="REALIZATION">
-      <point x="0.0" y="-104.5" />
-      <point x="0.0" y="286.5" />
+      <point x="106.0" y="0.0" />
+      <point x="-232.0" y="66.27856537271964" />
     </edge>
     <edge source="layout.mainFrame.bmiMainFrame" target="wx.core.Frame" relationship="REALIZATION">
-      <point x="0.0" y="-70.5" />
-      <point x="0.0" y="346.5" />
+      <point x="-11.703674975039235" y="-69.5" />
+      <point x="0.0" y="345.5" />
+    </edge>
+    <edge source="wx.core.PyEvent" target="wx.core.Event" relationship="REALIZATION">
+      <point x="-165.0" y="0.0" />
+      <point x="1349.2240959073133" y="1193.237025287227" />
+      <point x="0.0" y="-285.5" />
     </edge>
     <edge source="wx.core.Object" target="object" relationship="REALIZATION">
-      <point x="0.0" y="-178.5" />
-      <point x="0.0" y="310.5" />
+      <point x="41.44885341534018" y="-177.49982961235878" />
+      <point x="1953.912" y="1444.364" />
+      <point x="1926.0" y="1444.364" />
+      <point x="1926.0" y="948.0" />
+      <point x="379.038" y="948.0" />
+      <point x="-3.858995413423827E-4" y="309.50045721198967" />
     </edge>
     <edge source="wx.core.Window" target="wx.core.WindowBase" relationship="REALIZATION">
-      <point x="0.0" y="-4176.5" />
-      <point x="0.0" y="44.5" />
+      <point x="-236.0" y="-3812.902054593959" />
+      <point x="1342.6414873921801" y="346.76361200210386" />
+      <point x="0.0" y="-44.5" />
     </edge>
     <edge source="layout.inputFrame.inputPanel" target="wx.core.Panel" relationship="REALIZATION">
-      <point x="0.0" y="-190.5" />
-      <point x="0.0" y="116.5" />
+      <point x="209.50032591983216" y="4.079093710060988E-4" />
+      <point x="997.0" y="6684.452" />
+      <point x="997.0" y="6502.762000000001" />
+      <point x="-236.00014050884351" y="15.000394676490941" />
+    </edge>
+    <edge source="bmi_calculator.WeightError" target="bmi_calculator.BmiError" relationship="REALIZATION">
+      <point x="-4.612744287442183E-4" y="15.000291283160095" />
+      <point x="1879.248" y="7400.0" />
+      <point x="210.21" y="7400.0" />
+      <point x="-4.171951803542129E-4" y="14.999863716135678" />
     </edge>
     <edge source="main.BmiUpdateEvent" target="wx.core.PyEvent" relationship="REALIZATION">
-      <point x="0.0" y="-46.5" />
+      <point x="108.50000000000011" y="0.0" />
+      <point x="1740.499339231713" y="2114.4373530020457" />
       <point x="0.0" y="104.5" />
     </edge>
     <edge source="main.AiResponsePopUp" target="layout.airesponsepopup.AiResponsePopUp" relationship="REALIZATION">
-      <point x="0.0" y="-82.5" />
-      <point x="0.0" y="58.5" />
+      <point x="136.5" y="0.0" />
+      <point x="1680.073" y="7118.523614149551" />
+      <point x="-14.99976292790575" y="57.5" />
     </edge>
     <edge source="main.InputHandler" target="layout.inputFrame.inputPanel" relationship="REALIZATION">
-      <point x="0.0" y="-82.5" />
-      <point x="0.0" y="190.5" />
+      <point x="-119.5" y="0.0" />
+      <point x="209.49999999999994" y="103.01947369316349" />
+    </edge>
+    <edge source="bmi_calculator.BodyTypeError" target="bmi_calculator.BmiError" relationship="REALIZATION">
+      <point x="-1.6268246963591082E-4" y="15.000324476314745" />
+      <point x="1575.502" y="7400.0" />
+      <point x="210.21" y="7400.0" />
+      <point x="-4.171951803542129E-4" y="14.999863716135678" />
+    </edge>
+    <edge source="ai_dlc.AiLib" target="object" relationship="REALIZATION">
+      <point x="3.256566349136847E-4" y="213.5002029922989" />
+      <point x="937.8" y="948.0" />
+      <point x="379.038" y="948.0" />
+      <point x="-3.858995413423827E-4" y="309.50045721198967" />
+    </edge>
+    <edge source="bmi_calculator.SexError" target="bmi_calculator.BmiError" relationship="REALIZATION">
+      <point x="-3.544179065784192E-4" y="-15.000341668326655" />
+      <point x="1164.745" y="7400.0" />
+      <point x="210.21" y="7400.0" />
+      <point x="-4.171951803542129E-4" y="14.999863716135678" />
     </edge>
   </edges>
-  <settings layout="Orthogonal Groups" zoom="0.11532792925571113" showDependencies="false" x="1007.4999999999982" y="5413.0" />
+  <settings layout="Hierarchic Compact" zoom="0.14958183990442056" showDependencies="false" x="1401.500000000001" y="4170.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
